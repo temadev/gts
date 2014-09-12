@@ -1,0 +1,27 @@
+{
+  "name": "gts",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Artem Kashin <dev.tema@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "bootstrap-datepicker": "~1.3.0",
+    "fontawesome": "~4.1.0",
+    "animo.js": "*",
+    "modernizr": "~2.8.2",
+    "fastclick": "~1.0.2",
+    "devbridge-autocomplete": "~1.2.9",
+    "gmaps": "~0.4.14"
+  }
+}

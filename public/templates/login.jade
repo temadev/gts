@@ -1,0 +1,27 @@
+extends layouts/page
+block content
+    .container
+        .row
+            .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-8.col-sm-offlset-2.col-xs-12
+                // START panel
+                .panel.panel-default
+                    p.text-center
+                        br
+                        a(href='/'): strong ГТС
+                    .text-center
+                        if messages
+                            each message in messages
+                                p: strong= message
+                    .panel-body
+                        form#loginForm(role='form', method='post', action='/login')
+                            .form-group.has-feedback
+                                label.control-label.sr-only(for='email') Email
+                                input#email.form-control(type='email', name='email', placeholder='Email')
+                                i.fa.fa-envelope.form-control-feedback.text-muted
+                            .form-group.has-feedback
+                                label.control-label.sr-only(for='password') Пароль
+                                input#password.form-control(type='password', name='password', placeholder='Пароль')
+                                i.fa.fa-lock.form-control-feedback.text-muted
+                            button.btn.btn-block.btn-primary(type='submit') Войти
+                            input(type='hidden', name='_csrf', value='#{_csrf}')
+                // END panel

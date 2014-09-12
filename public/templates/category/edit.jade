@@ -1,0 +1,58 @@
+extends ../layouts/page
+block content
+    // START #content
+    .container
+        form.form-horizontal#contractorForm(role='form', method='post', action='/category/edit')
+            // START panel
+            .panel.panel-default
+                .panel-heading Редактировать рубрику
+                .panel-body
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Название
+                            .col-sm-6
+                                input.form-control#title(type='text', name='title', required='required', value='#{category.title?category.title:""}')
+                        .form-group
+                            label.col-sm-2.control-label Категория
+                            .col-sm-6
+                                select.form-control(name='category')
+                                    option(value='') ---
+                                    each cat in categories
+                                        if(category.category && cat._id+'' == category.category+'')
+                                            option(value='#{cat._id}', selected)= cat.title
+                                        else
+                                            option(value='#{cat._id}')= cat.title
+                        .form-group
+                            label.col-sm-2.control-label URL
+                            .col-sm-6
+                                input.form-control#url(type='text', name='url', value='#{category.url?category.url:""}')
+                        .form-group
+                            label.col-sm-2.control-label Контент
+                            .col-sm-9
+                                textarea.form-control#categoryContent(name='content', rows='6') #{category.content?category.content:""}
+                        .form-group
+                            label.col-sm-2.control-label Картинка
+                            .col-sm-4
+                                input.form-control#image(type='text', name='image', value='#{category.image?category.image:""}')
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Keywords
+                            .col-sm-9
+                                input.form-control#seoKeywords(type='text', name='seo.keywords', value='#{category.seo.keywords?category.seo.keywords:""}')
+                        .form-group
+                            label.col-sm-2.control-label Description
+                            .col-sm-9
+                                input.form-control#seoDescription(type='text', name='seo.description', value='#{category.seo.description?category.seo.description:""}')
+                        .form-group
+                            label.col-sm-2.control-label Canonical
+                            .col-sm-4
+                                input.form-control#seoCanonical(type='text', name='seo.canonical', value='#{category.seo.canonical?category.seo.canonical:""}')
+                        .form-group
+                            label.col-sm-2.control-label SEO
+                            .col-sm-9
+                                textarea.form-control#seoContent(name='seo.content', rows='6') #{category.seo.content?category.seo.content:""}
+                .panel-footer
+                    button.btn.btn-primary(type='submit') Сохранить
+                    input(type="hidden", name="id", value="#{category.id}")
+                    input(type="hidden", name="_csrf", value="#{_csrf}")
+            // END panel

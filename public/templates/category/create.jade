@@ -1,0 +1,54 @@
+extends ../layouts/page
+block content
+    // START #content
+    .container
+        form.form-horizontal#contractorForm(role='form', method='post', action='/category/create')
+            // START panel
+            .panel.panel-default
+                .panel-heading Новая рубрика
+                .panel-body
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Название
+                            .col-sm-6
+                                input.form-control#title(type='text', name='title', required='required')
+                        .form-group
+                            label.col-sm-2.control-label Категория
+                            .col-sm-6
+                                select.form-control(name='category')
+                                    option(value='', selected=) ---
+                                    each cat in categories
+                                        option(value='#{cat._id}')= cat.title
+                        .form-group
+                            label.col-sm-2.control-label URL
+                            .col-sm-6
+                                input.form-control#url(type='text', name='url')
+                        .form-group
+                            label.col-sm-2.control-label Контент
+                            .col-sm-9
+                                textarea.form-control#categoryContent(name='content', rows='6')
+                        .form-group
+                            label.col-sm-2.control-label Картинка
+                            .col-sm-4
+                                input.form-control#image(type='text', name='image')
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Keywords
+                            .col-sm-9
+                                input.form-control#seoKeywords(type='text', name='seo.keywords')
+                        .form-group
+                            label.col-sm-2.control-label Description
+                            .col-sm-9
+                                input.form-control#seoDescription(type='text', name='seo.description')
+                        .form-group
+                            label.col-sm-2.control-label Canonical
+                            .col-sm-4
+                                input.form-control#seoCanonical(type='text', name='seo.canonical')
+                        .form-group
+                            label.col-sm-2.control-label SEO
+                            .col-sm-9
+                                textarea.form-control#seoContent(name='seo.content', rows='6')
+                .panel-footer
+                    button.btn.btn-primary(type='submit') Сохранить
+                    input(type="hidden", name="_csrf", value="#{_csrf}")
+            // END panel

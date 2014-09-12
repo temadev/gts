@@ -1,0 +1,53 @@
+extends ../layouts/main
+block active-item
+    - nav.menu[category.category.title].active = 1
+    - nav.menu[category.category.title].S[category.title].active = 1
+block seo
+    meta(name='description', content='#{category.seo.description}')
+    meta(name='keywords', content='#{category.seo.keywords}')
+    title #{category.title}
+block content
+    .container
+        .row
+            .col-lg-9
+                .myBoard
+                    if (category.category)
+                        .clearfix.mrg2
+                            .col-md-2
+                                if (user && user.role == 'admin')
+                                    a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') редактировать
+                                .thumb: img(src='img/icons/#{category.image}')
+                            .col-md-10
+                                small: a(href='category/#{category.category.url}')= category.category.title
+                                h1.subTitle= category.title
+                                p= category.content
+                        if (machinery[0])
+                            .row
+                                table.myTable
+                                    thead
+                                        tr
+                                            td Модель
+                                            td #{machinery[0].params[0].name}
+                                            if (machinery[0].params[1])
+                                                td #{machinery[0].params[1].name}
+                                            td Стоимость аренды
+                                    tbody
+                                        each machine in machinery
+                                            tr
+                                                td: a(href='machinery/#{machine.url}')= machine.title
+                                                td #{machine.params[0].value}
+                                                if (machine.params[1])
+                                                    td #{machine.params[1].value}
+                                                td #{machine.price} руб./час
+                    else
+                        .clearfix.mrg2
+                            .col-md-12
+                                h1.subTitle= category.title
+                                p= category.content
+            .col-lg-3
+                include ../partials/sidebar
+
+    if (category.seo && category.seo.content)
+        .allotted-2: .container
+            article.seo(role='article')
+                != category.seo.content

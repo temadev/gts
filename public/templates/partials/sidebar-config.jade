@@ -1,0 +1,16 @@
+mixin build-sidebar-items(items)
+    each val, key in items
+        - has_submenu = !!val.S
+        if (key != 'Главная')
+                if (has_submenu)
+                    .panel.panel-default
+                        .panel-heading
+                            h4.panel-title
+                                a(data-toggle="collapse", data-parent="#sidebar", href="##{val.id}")= key
+                        .panel-collapse.collapse(id="#{val.id}", class="#{(val.active === 1)?'in':''}")
+                            .list-group
+                                +build-sidebar-items(val.S)
+                else
+                    a.list-group-item(href="#{val.href}", class="#{(val.active === 1)?'active':''}")
+                        | #{key}
+                        img(src='img/icons/#{val.image}')

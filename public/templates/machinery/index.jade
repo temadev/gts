@@ -1,0 +1,42 @@
+extends ../layouts/main
+block active-item
+    - nav.menu[machinery.category.category.title].active = 1
+    - nav.menu[machinery.category.category.title].S[machinery.category.title].active = 1
+block seo
+    meta(name='description', content='#{machinery.seo.description}')
+    meta(name='keywords', content='#{machinery.seo.keywords}')
+    title #{machinery.title}
+block content
+    .container
+        .row
+            .col-lg-9
+                .myBoard
+                    .clearfix.mrg2
+                        .col-md-5
+                            if (user && user.role == 'admin')
+                                a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
+                            if (machinery.images)
+                                .thumb: img(src='img/machinery/#{machinery.images[0]}')
+                        .col-md-7
+                            small: a(href='category/#{machinery.category.url}')= machinery.category.title
+                            h1= machinery.title
+                            h3
+                                | #{machinery.price} руб./час
+                                br
+                                small Минимальная смена — 4 ч.
+                            p= machinery.content
+                            if (machinery.params)
+                                .panel.panel-default
+                                    .panel-heading Характеристики
+                                    table.table
+                                        each param in machinery.params
+                                            tr
+                                                td= param.name
+                                                td= param.value
+            .col-lg-3
+                include ../partials/sidebar
+
+    if (machinery.seo && machinery.seo.content)
+        .allotted-2: .container
+            article.seo(role='article')
+                != machinery.seo.content

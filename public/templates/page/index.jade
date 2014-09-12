@@ -1,0 +1,18 @@
+extends ../layouts/main
+block seo
+    meta(name='description', content='#{page.seo.description}')
+    meta(name='keywords', content='#{page.seo.keywords}')
+    title #{page.title}
+block content
+    // START #content
+    .container
+        .myBoard
+            .clearfix.mrg2
+                .col-md-12
+                    h1.subTitle= page.title
+                    if (user && user.role == 'admin')
+                        a.btn.btn-default.btn-xs(href='page/edit/#{page._id}') редактировать
+                    != page.content
+    // END #content
+    if (page.seo && page.seo.content)
+        != page.seo.content

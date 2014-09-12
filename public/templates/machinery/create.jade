@@ -1,0 +1,70 @@
+extends ../layouts/page
+block content
+    // START #content
+    .container
+        form.form-horizontal#contractorForm(role='form', method='post', action='/machinery/create')
+            // START panel
+            .panel.panel-default
+                .panel-heading Новая техника
+                .panel-body
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Название
+                            .col-sm-6
+                                input.form-control#title(type='text', name='title', required='required')
+                        .form-group
+                            label.col-sm-2.control-label URL
+                            .col-sm-6
+                                input.form-control#url(type='text', name='url')
+                        .form-group
+                            label.col-sm-2.control-label Категория
+                            .col-sm-6
+                                select.form-control(name='category')
+                                    option(value='', selected=) ---
+                                    each cat in categories
+                                        option(value='#{cat._id}')= cat.title
+                        .form-group
+                            label.col-sm-2.control-label Контент
+                            .col-sm-9
+                                textarea.form-control#categoryContent(name='content', rows='6')
+                        .form-group
+                            label.col-sm-2.control-label Стоимость
+                            .col-sm-4
+                                input.form-control(type='text', name='price')
+                        .form-group
+                            label.col-sm-2.control-label Картинки
+                            .col-sm-4
+                                input.form-control(type='text', name='images[]')
+                                input.form-control(type='text', name='images[]')
+                    fieldset
+                        .form-group.clonedInput#param1
+                            label.col-sm-2.control-label Характеристики
+                            .col-sm-4
+                                input.form-control#paramName1(type='text', name='params[0][name]')
+                            .col-sm-4
+                                input.form-control#paramValue1(type='text', name='params[0][value]')
+                        .form-group
+                            .col-sm-4.col-sm-offset-2
+                                button#paramAdd.btn.btn-default Добавить поле
+                                button#paramDel.btn.btn-default Удалить поле
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Keywords
+                            .col-sm-9
+                                input.form-control#seoKeywords(type='text', name='seo.keywords')
+                        .form-group
+                            label.col-sm-2.control-label Description
+                            .col-sm-9
+                                input.form-control#seoDescription(type='text', name='seo.description')
+                        .form-group
+                            label.col-sm-2.control-label Canonical
+                            .col-sm-4
+                                input.form-control#seoCanonical(type='text', name='seo.canonical')
+                        .form-group
+                            label.col-sm-2.control-label SEO
+                            .col-sm-9
+                                textarea.form-control#seoContent(name='seo.content', rows='6')
+                .panel-footer
+                    button.btn.btn-primary(type='submit') Сохранить
+                    input(type="hidden", name="_csrf", value="#{_csrf}")
+            // END panel

@@ -1,0 +1,36 @@
+.meadiHolder
+    #carousel.carousel.slide.c-fade(data-ride='carousel')
+        .carousel-inner
+            if (nav.menu['Главная']['active'])
+                .active.item
+                    img(src='img/art_promo_1.jpg')
+                .item
+                    img(src='img/slide2.jpg')
+                    .carousel-caption.hidden-xs
+                        h3
+                            span Сочи 2014
+                        .price Строительство спорткомплекса
+                .item
+                    img(src='img/slide3.jpg')
+                    .carousel-caption.hidden-xs
+                        h3
+                            small: span Специальная цена
+                            span Погрузчик JCB3CX
+                        .price
+                            | 1200
+                            span руб/час
+            else
+                .active.item: img(src='img/art_promo_2.jpg')
+.myForm.clearfix
+    input#autocomplete-dynamic(type='text', placeholder='Поиск по базе из #{machineryCount} ед. спецтехники', name='country')
+    //input(type='submit', value='Ярославль', disabled)
+    .btn-group.btn-group-lg.dropup
+        button.btn.btn-primary Ярославль
+        button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown'): span.caret
+        ul.dropdown-menu(role='menu')
+            li: a(href='#') Ярославль
+            li: a(href='#') Рыбинск
+            li: a(href='#') Ростов
+if (nav.menu['Главная']['active'])
+    .slideHolder
+        a.scrollTo(href='#content'): i.fa.fa-angle-down

@@ -1,0 +1,81 @@
+extends ../layouts/page
+block content
+    // START #content
+    .container
+        form.form-horizontal#contractorForm(role='form', method='post', action='/machinery/edit')
+            // START panel
+            .panel.panel-default
+                .panel-heading Новая техника
+                .panel-body
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Название
+                            .col-sm-6
+                                input.form-control#title(type='text', name='title', required='required', value='#{machinery.title?machinery.title:""}')
+                        .form-group
+                            label.col-sm-2.control-label URL
+                            .col-sm-6
+                                input.form-control#url(type='text', name='url', value='#{machinery.url?machinery.url:""}')
+                        .form-group
+                            label.col-sm-2.control-label Категория
+                            .col-sm-6
+                                select.form-control(name='category')
+                                    option(value='', selected=) ---
+                                    each cat in categories
+                                        if(machinery.category && cat._id+'' == machinery.category+'')
+                                            option(value='#{cat._id}', selected)= cat.title
+                                        else
+                                            option(value='#{cat._id}')= cat.title
+                        .form-group
+                            label.col-sm-2.control-label Контент
+                            .col-sm-9
+                                textarea.form-control#categoryContent(name='content', rows='6') #{machinery.content?machinery.content:""}
+                        .form-group
+                            label.col-sm-2.control-label Стоимость
+                            .col-sm-4
+                                input.form-control(type='text', name='price', value='#{machinery.price?machinery.price:""}')
+                        //.form-group
+                        //    label.col-sm-2.control-label Продолжительность смены
+                        //    .col-sm-3
+                        //        input.form-control(type='text', name='region[0][name]', value='Ярославль', disabled)
+                        //    .col-sm-4
+                        //        input.form-control(type='text', name='region[0][smena]', value='#{machinery.region}')
+                        .form-group
+                            label.col-sm-2.control-label Картинки
+                            .col-sm-4
+                                each image in machinery.images
+                                    input.form-control(type='text', name='images[]', value='#{image}')
+                    fieldset
+                        each param, index in machinery.params
+                            .form-group.clonedInput#param1
+                                label.col-sm-2.control-label Характеристики
+                                .col-sm-4
+                                    input.form-control#paramName1(type='text', name='params[#{index}][name]', value='#{param.name}')
+                                .col-sm-4
+                                    input.form-control#paramValue1(type='text', name='params[#{index}][value]', value='#{param.value}')
+                        .form-group
+                            .col-sm-4.col-sm-offset-2
+                                button#paramAdd.btn.btn-default Добавить поле
+                                button#paramDel.btn.btn-default Удалить поле
+                    fieldset
+                        .form-group
+                            label.col-sm-2.control-label Keywords
+                            .col-sm-9
+                                input.form-control#seoKeywords(type='text', name='seo.keywords', value='#{machinery.seo.keywords?machinery.seo.keywords:""}')
+                        .form-group
+                            label.col-sm-2.control-label Description
+                            .col-sm-9
+                                input.form-control#seoDescription(type='text', name='seo.description', value='#{machinery.seo.description?machinery.seo.description:""}')
+                        .form-group
+                            label.col-sm-2.control-label Canonical
+                            .col-sm-4
+                                input.form-control#seoCanonical(type='text', name='seo.canonical', value='#{machinery.seo.canonical?machinery.seo.canonical:""}')
+                        .form-group
+                            label.col-sm-2.control-label SEO
+                            .col-sm-9
+                                textarea.form-control#seoContent(name='seo.content', rows='6') #{machinery.seo.content?machinery.seo.content:""}
+                .panel-footer
+                    button.btn.btn-primary(type='submit') Сохранить
+                    input(type="hidden", name="id", value="#{machinery.id}")
+                    input(type="hidden", name="_csrf", value="#{_csrf}")
+            // END panel

@@ -1,0 +1,19 @@
+// START Top Navbar
+nav#headMenu.navbar.navbar-default(role='navigation')
+    .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+            span.navbar-brand Каталог спецтехники
+            i.fa.fa-bars
+    #navbar-collapse-1.collapse.navbar-collapse
+        .pages
+            ul.list-inline
+                li: a(href='/page/o-kompanii') О компании
+                li: a(href='/page/sotrudnichestvo') Сотрудничество
+                li: a(href='/page/kontakty') Контакты
+        ul.nav.navbar-nav
+            +build-menu-items(nav.menu)
+            li: a(href='/page/pesok-shheben-beton') Песок, щебень, бетон
+// END Top Navbar
+.sitePhone.text-right
+    span (4852)&nbsp;
+    | 57-01-01, 90-01-01
