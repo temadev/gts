@@ -7,8 +7,8 @@
   },
 
   "databaseConfig": {
-    "host": "gts:gts@ds031319.mongolab.com:31319",
-    "database": "heroku_app26509751"
+    "host": "mongodb://heroku_app29506363:inu9hg8m6asa1341fl8u47claa@ds063789.mongolab.com:63789",
+    "database": "heroku_app29506363"
   },
 
   "bcrypt": {
