@@ -22,7 +22,7 @@ module.exports = function (router) {
 
   router.get('/list', function (req, res) {
 
-    var regex = new RegExp(req.query["query"], 'i');
+    var regex = new RegExp(req.query.query, 'i');
     var suggestions = [];
 
     async.parallel({
@@ -61,7 +61,7 @@ module.exports = function (router) {
                     async.each(machinery, function (mach, callback) {
 
                       machineryCat.push(mach);
-                      callback()
+                      callback();
                     }, function () {
                       callback();
                     });
@@ -107,7 +107,7 @@ module.exports = function (router) {
         }
       ], function () {
         res.json({
-          query: req.query["query"],
+          query: req.query.query,
           suggestions: suggestions
         });
       });
