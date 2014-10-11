@@ -80,6 +80,24 @@
         "name":"path:./lib/auth",
         "method": "injectUser"
       }
+    },
+
+    "machineryCount": {
+      "enabled": true,
+      "priority": 113,
+      "module": {
+        "name":"path:./lib/machineryCount",
+        "method": "machineryCount"
+      }
+    },
+
+    "nav": {
+      "enabled": true,
+      "priority": 114,
+      "module": {
+        "name":"path:./lib/nav",
+        "method": "categories"
+      }
     }
 
   }

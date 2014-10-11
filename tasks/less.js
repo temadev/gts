@@ -12,7 +12,9 @@ module.exports = function less(grunt) {
         cleancss: true
       },
       files: {
-        '.build/css/app.css': 'public/css/app.less'
+        '.build/css/app.css': 'public/css/app.less',
+        '.build/css/bootstrap.css': 'public/css/bootstrap.less',
+        '.build/css/fa.css': 'public/css/fa.less'
       }
     }
   };
