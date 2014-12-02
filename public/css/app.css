@@ -1296,7 +1296,12 @@ h6 {
 }
 .img-page {
   max-width: 300px;
+}
+.img-page.pull-left {
   margin: 0 20px 5px 0;
+}
+.img-page.pull-right {
+  margin: 0 0 5px 20px;
 }
 .myBoard .thumb {
   text-align: center;

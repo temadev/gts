@@ -1573,7 +1573,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .img-page {
   max-width: 300px;
-  margin: 0 20px 5px 0;
+  &.pull-left {
+    margin: 0 20px 5px 0;
+  }
+  &.pull-right {
+    margin: 0 0 5px 20px;
+  }
 }
 
 .myBoard .thumb {
