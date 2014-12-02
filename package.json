@@ -4,6 +4,9 @@
   "description": "global techno stroy",
   "author": "temakashin",
   "main": "index.js",
+  "engines": {
+    "node": "0.10.x"
+  },
   "scripts": {
     "test": "grunt test",
     "start": "node index.js",
