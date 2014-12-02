@@ -1294,6 +1294,10 @@ h6 {
   border: 1px solid #e5e6e9;
   background: #fff;
 }
+.img-page {
+  max-width: 300px;
+  margin: 0 20px 5px 0;
+}
 .myBoard .thumb {
   text-align: center;
 }
