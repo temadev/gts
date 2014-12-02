@@ -7,3 +7,44 @@ script(src='http://maps.google.com/maps/api/js?sensor=true')
 script(src='components/gmaps/gmaps.js')
 // App Main
 script(src='js/app.js')
+// Counters
+script.
+  (function () {
+    var widget_id = 643762;
+    _shcp = [{widget_id: widget_id}];
+    var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "ru").substr(0, 2).toLowerCase();
+    var url = "widget.siteheart.com/widget/sh/" + widget_id + "/" + lang + "/widget.js";
+    var hcc = document.createElement("script");
+    hcc.type = "text/javascript";
+    hcc.async = true;
+    hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://" + url;
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hcc, s.nextSibling);
+  })();
+script.
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      try {
+        w.yaCounter21089290 = new Ya.Metrika({
+          id: 21089290,
+          webvisor: true,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true
+        });
+      } catch (e) {
+      }
+    });
+    var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
+      n.parentNode.insertBefore(s, n);
+    };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+noscript: div: img(src="//mc.yandex.ru/watch/21089290" style="position:absolute; left:-9999px;" alt="")
