@@ -3,15 +3,24 @@
         .carousel-inner
             if (nav.menu['Главная']['active'])
                 .active.item
-                    img(src='img/art_promo_1.jpg')
+                    picture
+                        source(srcset='img/slide1_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/slide1.jpg')
+                        img(src='img/slide1.jpg', alt='ГТС ГлобалТехноСтрой')
                 .item
-                    img(src='img/slide2.jpg')
+                    picture
+                        source(srcset='img/slide2_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/slide2.jpg')
+                        img(src='img/slide2.jpg', alt='Строительство спорткомплекса')
                     .carousel-caption.hidden-xs
                         h3
                             span Сочи 2014
                         .price Строительство спорткомплекса
                 .item
-                    img(src='img/slide3.jpg')
+                    picture
+                        source(srcset='img/slide3_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/slide3.jpg')
+                        img(src='img/slide3.jpg', alt='Погрузчик JCB3CX')
                     .carousel-caption.hidden-xs
                         h3
                             small: span Специальная цена
@@ -20,7 +29,11 @@
                             | 1200
                             span руб/час
             else
-                .active.item: img(src='img/art_promo_2.jpg')
+                .active.item
+                    picture
+                        source(srcset='img/sub1_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/sub1.jpg')
+                        img(src='img/sub1.jpg', alt='ГТС ГлобалТехноСтрой')
 .myForm.clearfix
     input#autocomplete-dynamic(type='text', placeholder='Поиск по базе из #{machineryCount} ед. спецтехники', name='country')
     //input(type='submit', value='Ярославль', disabled)
