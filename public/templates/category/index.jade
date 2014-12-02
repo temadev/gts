@@ -23,30 +23,31 @@ block content
                                 p!= category.content
                         if (machinery[0])
                             .row
-                                table.myTable
-                                    thead
-                                        tr
-                                            td Модель
-                                            td #{machinery[0].params[0].name}
-                                            if (machinery[0].params[1])
-                                                td #{machinery[0].params[1].name}
-                                            td Стоимость аренды
-                                    tbody
-                                        each machine in machinery
+                                .table-responsive
+                                    table.myTable
+                                        thead
                                             tr
-                                                td: a(href='machinery/#{machine.url}')= machine.title
-                                                td #{machine.params[0].value}
-                                                if (machine.params[1])
-                                                    td #{machine.params[1].value}
-                                                td
-                                                    if machine.price && machine.price !== '0'
-                                                        | #{machine.price}&nbsp;
-                                                        if machine.category == '544677d1f23fda0000151807' || machine.category == '5446779ef23fda0000151806'
-                                                            | руб./сут
+                                                td Модель
+                                                td #{machinery[0].params[0].name}
+                                                if (machinery[0].params[1])
+                                                    td #{machinery[0].params[1].name}
+                                                td Стоимость аренды
+                                        tbody
+                                            each machine in machinery
+                                                tr
+                                                    td: a(href='machinery/#{machine.url}')= machine.title
+                                                    td #{machine.params[0].value}
+                                                    if (machine.params[1])
+                                                        td #{machine.params[1].value}
+                                                    td
+                                                        if machine.price && machine.price !== '0'
+                                                            | #{machine.price}&nbsp;
+                                                            if machine.category == '544677d1f23fda0000151807' || machine.category == '5446779ef23fda0000151806'
+                                                                | руб./сут
+                                                            else
+                                                                | руб./час
                                                         else
-                                                            | руб./час
-                                                    else
-                                                        | звоните
+                                                            | звоните
                     else
                         .clearfix.mrg2
                             .col-md-12
