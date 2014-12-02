@@ -5,7 +5,7 @@ block active-item
 block seo
     meta(name='description', content='#{category.seo.description}')
     meta(name='keywords', content='#{category.seo.keywords}')
-    title #{category.title}
+    title #{category.seo.title?category.seo.title:category.title} | ГлобалТехноСтрой
 block content
     .container
         .row
@@ -38,7 +38,15 @@ block content
                                                 td #{machine.params[0].value}
                                                 if (machine.params[1])
                                                     td #{machine.params[1].value}
-                                                td #{machine.price} руб./час
+                                                td
+                                                    if machine.price && machine.price !== '0'
+                                                        | #{machine.price}&nbsp;
+                                                        if machine.category == '544677d1f23fda0000151807' || machine.category == '5446779ef23fda0000151806'
+                                                            | руб./сут
+                                                        else
+                                                            | руб./час
+                                                    else
+                                                        | звоните
                     else
                         .clearfix.mrg2
                             .col-md-12

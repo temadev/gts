@@ -2,7 +2,7 @@ extends ../layouts/main
 block seo
     meta(name='description', content='#{page.seo.description}')
     meta(name='keywords', content='#{page.seo.keywords}')
-    title #{page.title}
+    title #{page.seo.title?page.seo.title:page.title}
 block content
     // START #content
     .container

@@ -10,6 +10,7 @@ var pageModal = function () {
     url: { type: String, unique: true },
     content: String,
     seo: {
+      title: String,
       keywords: String,
       description: String,
       content: String,

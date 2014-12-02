@@ -37,7 +37,7 @@ block content
                                 input.form-control(type='text', name='images[]')
                                 input.form-control(type='text', name='images[]')
                     fieldset
-                        .form-group.clonedInput#param1
+                        .form-group.clonedRegion#param1
                             label.col-sm-2.control-label Характеристики
                             .col-sm-4
                                 input.form-control#paramName1(type='text', name='params[0][name]')
@@ -47,7 +47,23 @@ block content
                             .col-sm-4.col-sm-offset-2
                                 button#paramAdd.btn.btn-default Добавить поле
                                 button#paramDel.btn.btn-default Удалить поле
+                    //fieldset
+                    //    .form-group.clonedInput#region1
+                    //        label.col-sm-2.control-label Регион/смена
+                    //        .col-sm-4
+                    //            input.form-control#regionName1(type='text', name='region[0][name]')
+                    //        .col-sm-4
+                    //            input.form-control#regionSmena1(type='text', name='region[0][smena]')
+                    //    .form-group
+                    //        .col-sm-4.col-sm-offset-2
+                    //            button#regionAdd.btn.btn-default Добавить регион
+                    //            button#regionDel.btn.btn-default Удалить регион
+                    hr
                     fieldset
+                        .form-group
+                            label.col-sm-2.control-label Title
+                            .col-sm-9
+                                input.form-control#seoTitle(type='text', name='seo.title')
                         .form-group
                             label.col-sm-2.control-label Keywords
                             .col-sm-9

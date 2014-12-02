@@ -12,6 +12,7 @@ var categoryModel = function () {
     content: String,
     image: String,
     seo: {
+      title: String,
       keywords: String,
       description: String,
       content: String,

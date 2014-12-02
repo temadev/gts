@@ -5,7 +5,7 @@ block active-item
 block seo
     meta(name='description', content='#{machinery.seo.description}')
     meta(name='keywords', content='#{machinery.seo.keywords}')
-    title #{machinery.title}
+    title #{machinery.seo.title?machinery.seo.title:machinery.title} | ГТС
 block content
     .container
         .row
@@ -15,17 +15,23 @@ block content
                         .col-md-5
                             if (user && user.role == 'admin')
                                 a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
-                            if (machinery.images)
+                            if (machinery.images && machinery.images.length > 0)
                                 .thumb: img(src='img/machinery/#{machinery.images[0]}')
                         .col-md-7
                             small: a(href='category/#{machinery.category.url}')= machinery.category.title
                             h1= machinery.title
                             h3
-                                | #{machinery.price} руб./час
-                                br
-                                small Минимальная смена — 4 ч.
-                            p= machinery.content
-                            if (machinery.params)
+                                if machinery.price && machinery.price !== '0'
+                                    | #{machinery.price}&nbsp;
+                                    if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
+                                        | руб./сутки
+                                    else
+                                        | руб./час
+                                    br
+                                if machinery.region[0] && machinery.region[0].smena
+                                    small Минимальное время заказа — #{machinery.region[0].smena}
+                            p!= machinery.content
+                            if (machinery.params && machinery.params.length > 0 && machinery.params[0].name !== '')
                                 .panel.panel-default
                                     .panel-heading Характеристики
                                     table.table

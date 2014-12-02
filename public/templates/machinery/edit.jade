@@ -34,17 +34,20 @@ block content
                             label.col-sm-2.control-label Стоимость
                             .col-sm-4
                                 input.form-control(type='text', name='price', value='#{machinery.price?machinery.price:""}')
-                        //.form-group
-                        //    label.col-sm-2.control-label Продолжительность смены
-                        //    .col-sm-3
-                        //        input.form-control(type='text', name='region[0][name]', value='Ярославль', disabled)
-                        //    .col-sm-4
-                        //        input.form-control(type='text', name='region[0][smena]', value='#{machinery.region}')
+                        .form-group
+                            label.col-sm-2.control-label Регион/мин.смена
+                            .col-sm-3
+                                input.form-control(type='text', name='region[0][name]', value='Ярославль', disabled)
+                            .col-sm-2
+                                input.form-control(type='text', name='region[0][smena]', value='#{machinery.region[0]&&machinery.region[0].smena?machinery.region[0].smena:"4 часа"}')
                         .form-group
                             label.col-sm-2.control-label Картинки
                             .col-sm-4
-                                each image in machinery.images
-                                    input.form-control(type='text', name='images[]', value='#{image}')
+                                if machinery.images.length > 0
+                                    each image in machinery.images
+                                        input.form-control(type='text', name='images[]', value='#{image}')
+                                else
+                                    input.form-control(type='text', name='images[]')
                     fieldset
                         each param, index in machinery.params
                             .form-group.clonedInput#param1
@@ -57,7 +60,12 @@ block content
                             .col-sm-4.col-sm-offset-2
                                 button#paramAdd.btn.btn-default Добавить поле
                                 button#paramDel.btn.btn-default Удалить поле
+                    hr
                     fieldset
+                        .form-group
+                            label.col-sm-2.control-label Title
+                            .col-sm-9
+                                input.form-control#seoTitle(type='text', name='seo.title', value='#{machinery.seo.title?machinery.seo.title:""}')
                         .form-group
                             label.col-sm-2.control-label Keywords
                             .col-sm-9

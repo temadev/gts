@@ -21,10 +21,11 @@ var machineryModel = function () {
     region: [
       {
         name: String,
-        smena: { type: String, default: '4' }
+        smena: { type: String, default: '4 часа' }
       }
     ],
     seo: {
+      title: String,
       keywords: String,
       description: String,
       content: String,

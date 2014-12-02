@@ -1,40 +1,28 @@
 doctype html
 html(lang='en')
-    head
-        include ../partials/navbar-config
-        include ../partials/sidebar-config
-        block active-item
-        include ../partials/head
-    body
-        // START Main wrapper
-        section#wrapper
-            header#header(class='clearfix', role='banner')
-                .container: .row
-                    .col-xs-4
-                        #logo: a(href='/'): img(src='img/logo.png', width='275')
-                    .col-xs-8
-                        include ../partials/top-navbar
-            section#headPromo
-                include ../partials/head-promo
-            // START Main section
-            section#content.clearfix
-                // START Page content
-                block content
-                // END Page content
-            // END Main section
-            // START #allotted
-            section.allotted(role='complementary')
-                h4.subTitle.text-center Заказы по телефонам
-                .sitePhone.text-center
-                    span (4852)&nbsp;
-                    | 57-01-01, 90-01-01
-            // END #allotted
-            // START #footer
-            footer#footer(role='contentinfo')
-                .container: .copyright &copy; 2010-2014 ГТС ГлобалТехноСтрой. <a href="#">Аренда спецтехники</a>
-            // END #footer
-        // END Main wrapper
-        block body_child
-        // START Scripts
-        include ../partials/scripts
-        // END Scripts
+  head
+    include ../partials/navbar-config
+    include ../partials/sidebar-config
+    block active-item
+    include ../partials/head
+  body
+    section#wrapper
+      header#header(class='clearfix', role='banner')
+        .container: .row
+          .col-xs-4
+            #logo: a(href='/'): img(src='img/logo.png', width='275')
+          .col-xs-8
+            include ../partials/top-navbar
+      section#headPromo
+        include ../partials/head-promo
+      section#content.clearfix
+        block content
+      section.allotted(role='complementary')
+        h4.subTitle.text-center Заказы по телефонам
+        .sitePhone.text-center
+          span (4852)&nbsp;
+          | 57-01-01, 90-01-01
+      footer#footer(role='contentinfo')
+        .container: .copyright &copy; 2010-2014 ГТС ГлобалТехноСтрой. <a href="/">Аренда спецтехники в Ярославле</a>
+    block body_child
+    include ../partials/scripts

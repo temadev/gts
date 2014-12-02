@@ -81,10 +81,17 @@ module.exports = function (router) {
       async.parallel([
         function (callback) {
           async.each(models.machinery, function (model, callback) {
+            var value
+              , price_type = (model.category._id+'' === '544677d1f23fda0000151807' || model.category._id+'' === '5446779ef23fda0000151806')?'руб./сутки':'руб./час';
+            if (model.params && model.params.length > 0 && model.params[0].name !== '') {
+              value = model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' ' + price_type;
+            } else {
+              value = model.category.title + ' ' + model.title + ' — ' + model.price + ' ' + price_type;
+            }
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,
-              value: model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' руб./час'
+              value: value
             };
             suggestions.push(curModel);
             callback();
@@ -94,10 +101,17 @@ module.exports = function (router) {
         },
         function (callback) {
           async.each(models.category, function (model, callback) {
+            var value
+              , price_type = (model.category._id+'' === '544677d1f23fda0000151807' || model.category._id+'' === '5446779ef23fda0000151806')?'руб./сутки':'руб./час';
+            if (model.params && model.params.length > 0 && model.params[0].name !== '') {
+              value = model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' ' + price_type;
+            } else {
+              value = model.category.title + ' ' + model.title + ' — ' + model.price + ' ' + price_type;
+            }
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,
-              value: model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' руб./час'
+              value: value
             };
             suggestions.push(curModel);
             callback();
