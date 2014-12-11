@@ -15,7 +15,7 @@ block content
                         .col-md-5
                             if (user && user.role == 'admin')
                                 a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
-                            if (machinery.images && machinery.images.length > 0)
+                            if (machinery.images && machinery.images.length > 0 && machinery.images[0] !== '')
                                 .thumb: img(src='img/machinery/#{machinery.images[0]}')
                         .col-md-7
                             small: a(href='category/#{machinery.category.url}')= machinery.category.title
