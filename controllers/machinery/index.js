@@ -9,17 +9,6 @@ var Machinery = require('../../models/machinery')
 
 module.exports = function (router) {
 
-//  router.get('/populate', function (req, res) {
-//    var region = [
-//      { name: 'Ярославль', smena: '4' },
-//      { name: 'Рыбинск', smena: '16' },
-//      { name: 'Ростов', smena: '12' },
-//    ];
-//    Machinery.update({}, {$set: { region: region }}, {upsert: true}, function (err) {
-//      res.send(200);
-//    });
-//  });
-
   router.get('/list', function (req, res) {
 
     var regex = new RegExp(req.query.query, 'i');
@@ -186,7 +175,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/edit', function (req, res) {
+  router.post('/edit', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
 
@@ -197,7 +186,7 @@ module.exports = function (router) {
   });
 
 
-  router.get('/create', function (req, res) {
+  router.get('/create', auth.isAuthenticated(), function (req, res) {
 
     Category.find({category: {$exists: true}})
       .exec(function (err, categories) {
@@ -214,9 +203,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/create', function (req, res) {
-
-//    console.log(req.body);
+  router.post('/create', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
 
@@ -229,7 +216,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/remove', function (req, res) {
+  router.post('/remove', auth.isAuthenticated(), function (req, res) {
 
     Machinery.findById(req.body.id, function (err, machinery) {
       machinery.remove();

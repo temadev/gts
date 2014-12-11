@@ -1,0 +1,77 @@
+extends ../layouts/main
+block seo
+  title Вся спецтехника
+  style.
+    #datatable tfoot input { width: 100%; }
+block content
+  .container(style='width:98%')
+    .myBoard
+      .clearfix.mrg2
+        .col-md-12
+          h1.subTitle Анализ странц сайта: Спецтехника
+          .table-responsive
+            table#datatable.table.table-striped.table-bordered.dt-responsive(width='100%')
+              thead
+                tr
+                  th.col-1 #
+                  th.col-2 Рубрика
+                  th.col-3 Модель
+                  th.col-4 Картинка
+                  th.col-5 Описание модели
+                  th.col-6 Цена
+                  th.col-7 Срок
+                  th.col-8 SEO URL
+                  th.col-9 SEO заголовок
+                  th.col-10 SEO описание страницы
+                  th.col-11 SEO ключевые слова
+                  th.col-12 SEO текст
+              tbody
+                each machine, index in machinery
+                  tr
+                    td #{index + 1}
+                    td #{machine.category.title}
+                    td #{machine.title}
+                    td!= (machine.images && machine.images.length > 0 && machine.images[0] != '') ? machine.images.length : '<i class="fa fa-times text-danger"></i>'
+                    td!= (machine.content && machine.content.length > 0) ? machine.content.length : '<i class="fa fa-times text-danger"></i>'
+                    td #{machine.price}
+                    td!= (machine.region && machine.region.length > 0 && machine.region[0].smena && machine.region[0].smena != '') ? machine.region[0].smena : '<i class="fa fa-times text-danger"></i>'
+                    td #{machine.url}
+                    td!= (machine.seo && machine.seo.title && machine.seo.title.length > 0) ? machine.seo.title.length : '<i class="fa fa-times text-danger"></i>'
+                    td!= (machine.seo && machine.seo.description && machine.seo.description.length > 0) ? machine.seo.description.length : '<i class="fa fa-times text-danger"></i>'
+                    td!= (machine.seo && machine.seo.keywords && machine.seo.keywords.length > 0) ? machine.seo.keywords.length : '<i class="fa fa-times text-danger"></i>'
+                    td!= (machine.seo && machine.seo.content && machine.seo.content.length > 0) ? machine.seo.content.length : '<i class="fa fa-times text-danger"></i>'
+              tfoot
+                tr
+                  th
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Рубрика')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Модель')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Картинка')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Описание модели')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Цена')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Срок')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='SEO URL')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='SEO заголовок')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='SEO описание страницы')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='SEO ключевые слова')
+                  th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='SEO текст')
+block page_scripts
+  script(type='text/javascript', charset='utf8', src='//cdn.datatables.net/1.10.4/js/jquery.dataTables.js')
+  script(src='//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js')
+  script.
+    $(document).ready(function () {
+      var dataTable = $('#datatable').DataTable({
+        'paging': true,
+        'ordering': true,
+        'info': true,
+        language: {
+          url: '//cdn.datatables.net/plug-ins/be7019ee387/i18n/Russian.json'
+        },
+        autoWidth: false
+      });
+
+      var inputSearch = 'datatable_input_col_search';
+      var columnInputs = $('tfoot .' + inputSearch);
+      columnInputs.keyup(function () {
+        dataTable.fnFilter(this.value, columnInputs.index(this) + 1);
+      });
+    });

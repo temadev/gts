@@ -64,7 +64,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/edit', function (req, res) {
+  router.post('/edit', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
 
@@ -75,7 +75,7 @@ module.exports = function (router) {
   });
 
 
-  router.get('/create', function (req, res) {
+  router.get('/create', auth.isAuthenticated(), function (req, res) {
 
     Category.find({category: {$exists: false}})
       .exec(function (err, categories) {
@@ -92,7 +92,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/create', function (req, res) {
+  router.post('/create', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
 
@@ -105,7 +105,7 @@ module.exports = function (router) {
   });
 
 
-  router.post('/remove', function (req, res) {
+  router.post('/remove', auth.isAuthenticated(), function (req, res) {
 
     Category.findById(req.body.id, function (err, category) {
       category.remove();
