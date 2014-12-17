@@ -18,7 +18,7 @@ block content
                                     a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') редактировать
                                 .thumb: img(src='img/icons/#{category.image}')
                             .col-md-10
-                                small: a(href='category/#{category.category.url}')= category.category.title
+                                small: a(href='/')= category.category.title
                                 h1.subTitle= category.title
                                 p!= category.content
                         if (machinery[0])
