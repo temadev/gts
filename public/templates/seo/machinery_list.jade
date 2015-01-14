@@ -1,0 +1,16 @@
+extends ../layouts/main
+block seo
+  title Вся спецтехника
+block content
+  .container(style='width:98%')
+    .myBoard
+      .clearfix.mrg2
+        .col-md-12
+
+          each machine, index in machinery
+            h3
+              a(href='/machinery/#{machine.url}') #{machine.title}
+              br
+              small #{machine.category.title}
+            p= machine.content
+            hr

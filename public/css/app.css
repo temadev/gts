@@ -185,6 +185,7 @@ h6 {
 /* START styles for menu */
 /* START #headMenu */
 #headMenu {
+  margin-left: 40px;
   margin-bottom: 10px;
   padding: 0;
   min-height: 0;
@@ -195,10 +196,10 @@ h6 {
   padding: 0;
 }
 #headMenu .navbar-collapse .pages {
-  margin-left: 40px;
+  margin-right: 40px;
 }
 #headMenu .navbar-collapse .pages ul {
-  text-align: right;
+  text-align: left;
 }
 #headMenu .navbar-nav {
   margin: 0;
@@ -206,9 +207,8 @@ h6 {
   list-style: none;
 }
 #headMenu .navbar-nav > li {
-  float: right;
-  margin-left: 30px;
-  margin-bottom: 10px;
+  float: left;
+  margin: 0 30px 10px 0;
 }
 #headMenu .navbar-nav > li.dropdown.open > a {
   background: none;
@@ -1185,7 +1185,11 @@ h6 {
   font-size: 85%;
 }
 #header .sitePhone {
+  float: right;
+  text-align: left;
+  margin-top: 14px;
   margin-left: 3px;
+  font-size: 26px;
 }
 .allotted .sitePhone {
   font-size: 64px;
@@ -1311,6 +1315,67 @@ h6 {
 .myBoard .thumb {
   text-align: center;
 }
+.myBoard h1 {
+  color: #0864B0;
+  font-weight: 600;
+  letter-spacing: -2px;
+  margin-top: -6px;
+  text-transform: uppercase;
+}
+.myBoard .order {
+  padding: 10px 0;
+  margin: 0 0 15px;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+.myBoard .order > div {
+  padding: 0;
+}
+.myBoard .price {
+  font-weight: bold;
+  font-size: 21px;
+  margin: 11px 0 11px 10px;
+}
+.myBoard .price small {
+  display: block;
+  font-size: 57%;
+}
+.myBoard .btn-order {
+  text-transform: uppercase;
+  text-align: left;
+  border-radius: 2px;
+  font-weight: 700;
+  text-shadow: 0 1px #409B40;
+  line-height: 1;
+  padding: 13px 18px;
+}
+.myBoard .btn-order .fa {
+  font-size: 1.6em;
+}
+.myBoard .btn-order small {
+  display: block;
+  text-transform: lowercase;
+  font-weight: 100;
+  font-size: 60%;
+}
+.myBoard .category {
+  font-weight: bold;
+  display: block;
+}
+.myBoard .category a {
+  color: #333;
+  text-transform: uppercase;
+}
+.myBoard .panel-default {
+  margin-top: 20px;
+  border-radius: 2px;
+  border: 1px solid #C2D7E8;
+}
+.myBoard .panel-default .panel-heading {
+  font-weight: bold;
+  background: #E5F3FF;
+  border-color: #C2D7E8;
+}
 @media (max-width: 991px) and (min-width: 768px) {
   .myBoard {
     margin-bottom: 40px;
@@ -1407,13 +1472,24 @@ body.home #content {
 }
 .autocomplete-suggestion {
   overflow: hidden;
-  padding: 2px 5px;
+  padding: 2px;
+  height: 84px;
   white-space: nowrap;
+}
+.autocomplete-suggestion img {
+  width: 80px;
+  max-height: 80px;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+}
+.autocomplete-suggestion strong {
+  display: block;
 }
 .autocomplete-selected {
   background: #f0f0f0;
 }
-.autocomplete-suggestions strong {
+.autocomplete-suggestions span {
   font-weight: normal;
   color: #39f;
 }

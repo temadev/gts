@@ -215,6 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* START #headMenu */
 #headMenu {
+  margin-left: 40px;
   margin-bottom: 10px;
   padding: 0;
   min-height: 0;
@@ -224,8 +225,8 @@ h1, h2, h3, h4, h5, h6 {
   .navbar-collapse {
     padding: 0;
     .pages {
-      margin-left: 40px;
-      ul { text-align: right; }
+      margin-right: 40px;
+      ul { text-align: left; }
     }
   }
 
@@ -234,9 +235,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     list-style: none;
     & > li {
-      float: right;
-      margin-left: 30px;
-      margin-bottom: 10px;
+      float: left;
+      margin: 0 30px 10px 0;
       &.dropdown {
 //        & > a {
 //          font-size: 16px;
@@ -1425,7 +1425,11 @@ h1, h2, h3, h4, h5, h6 {
 
 #header {
   .sitePhone {
+    float: right;
+    text-align: left;
+    margin-top: 14px;
     margin-left: 3px;
+    font-size: 26px;
   }
 }
 
@@ -1588,6 +1592,70 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.myBoard {
+  h1 {
+    color: #0864B0;
+    font-weight: 600;
+    letter-spacing: -2px;
+    margin-top: -6px;
+    text-transform: uppercase;
+  }
+  .order {
+    padding: 10px 0;
+    margin: 0 0 15px;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    & > div {
+      padding: 0;
+    }
+  }
+  .price {
+    font-weight: bold;
+    font-size: 21px;
+    margin: 11px 0 11px 10px;
+    small {
+      display: block;
+      font-size: 57%;
+    }
+  }
+  .btn-order {
+    text-transform: uppercase;
+    text-align: left;
+    border-radius: 2px;
+    font-weight: 700;
+    text-shadow: 0 1px #409B40;
+    line-height: 1;
+    padding: 13px 18px;
+    .fa {
+      font-size: 1.6em;
+    }
+    small {
+      display: block;
+      text-transform: lowercase;
+      font-weight: 100;
+      font-size: 60%;
+    }
+  }
+  .category {
+    font-weight: bold;
+    display: block;
+    a {
+      color: #333;
+      text-transform: uppercase;
+    }
+  }
+  .panel-default {
+    margin-top: 20px;
+    border-radius: 2px;
+    border: 1px solid #C2D7E8;
+    .panel-heading {
+      font-weight: bold;
+      background: #E5F3FF;
+      border-color: #C2D7E8;
+    }
+  }
+}
+
 @media (max-width: 991px) and (min-width: 768px) {
   .myBoard {
     margin-bottom: 40px;
@@ -1717,15 +1785,27 @@ body.home #content {
 
 .autocomplete-suggestion {
   overflow: hidden;
-  padding: 2px 5px;
+  padding: 2px;
+  height: 84px;
   white-space: nowrap;
+
+  img {
+    width: 80px;
+    max-height: 80px;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+  }
+  strong {
+    display: block;
+  }
 }
 
 .autocomplete-selected {
   background: #f0f0f0;
 }
 
-.autocomplete-suggestions strong {
+.autocomplete-suggestions span {
   font-weight: normal;
   color: #39f;
 }

@@ -9,10 +9,16 @@ html(lang='en')
     section#wrapper
       header#header(class='clearfix', role='banner')
         .container: .row
-          .col-xs-4
+          .col-xs-3
             #logo: a(href='/'): img(src='img/logo.png', width='275')
-          .col-xs-8
+          .col-xs-6
             include ../partials/top-navbar
+          .col-xs-3
+            .sitePhone.text-right
+              | 8-800-500-30-70
+              div
+                span (4852)&nbsp;
+                | 57-01-01, 90-01-01
       section#headPromo
         include ../partials/head-promo
       section#content.clearfix

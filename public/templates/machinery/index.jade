@@ -18,18 +18,24 @@ block content
                             if (machinery.images && machinery.images.length > 0 && machinery.images[0] !== '')
                                 .thumb: img(src='img/machinery/#{machinery.images[0]}')
                         .col-md-7
-                            small: a(href='category/#{machinery.category.url}')= machinery.category.title
+                            small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
                             h1= machinery.title
-                            h3
-                                if machinery.price && machinery.price !== '0'
-                                    | #{machinery.price}&nbsp;
-                                    if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
-                                        | руб./сутки
-                                    else
-                                        | руб./час
-                                    br
-                                if machinery.region[0] && machinery.region[0].smena
-                                    small Минимальное время заказа — #{machinery.region[0].smena}
+                            .row.order
+                                .col-xs-5
+                                    h3.price
+                                        small Стоимость аренды:
+                                        if machinery.price && machinery.price !== '0'
+                                            | #{machinery.price}&nbsp;
+                                        if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
+                                            | руб./сутки
+                                        else
+                                            | руб./час
+                                .col-xs-7.text-right
+                                    a.btn.btn-success.btn-lg.btn-order(href='#', data-toggle='modal', data-target='#modalOrder')
+                                        i.fa.fa-print.pull-left
+                                        | Оставить заявку
+                                        if machinery.region[0] && machinery.region[0].smena
+                                            small Минимальный заказ — #{machinery.region[0].smena}
                             p!= machinery.content
                             if (machinery.params && machinery.params.length > 0 && machinery.params[0].name !== '')
                                 .panel.panel-default
@@ -46,3 +52,14 @@ block content
         .allotted-2: .container
             article.seo(role='article')
                 != machinery.seo.content
+
+block body_child
+    #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true'): i.fa.fa-times
+                    h4#modalOrderLabel.modal-title Оставить заявку
+                .modal-body#modalOrderTitle
+                .modal-footer
+                    button.btn.btn-danger#modalOrderBtn(type='submit', data-csrf='#{_csrf}') Оставить заявку

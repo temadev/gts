@@ -17,11 +17,11 @@ module.exports = function (router) {
     async.parallel({
       machinery: function (callback) {
         Machinery
-          .find({ title: regex }, { 'title': 1, 'category': 1, 'url': 1, 'params': 1, 'price': 1 })
+          .find({ title: regex }, { 'title': 1, 'category': 1, 'url': 1, 'params': 1, 'price': 1, images: 1 })
           .populate('category', 'title')
           .sort({'updated_at': -1})
           .sort({'created_at': -1})
-          .limit(20)
+          .limit(5)
           .exec(function (err, machinery) {
             callback(null, machinery);
           });
@@ -31,7 +31,7 @@ module.exports = function (router) {
           .find({ title: regex }, {_id: 1})
           .sort({'updated_at': -1})
           .sort({'created_at': -1})
-          .limit(20)
+          .limit(5)
           .exec(function (err, category) {
 //            console.log(category);
 
@@ -39,11 +39,11 @@ module.exports = function (router) {
             async.each(category, function (cat, callback) {
 //              console.log(cat);
               Machinery
-                .find({category: cat._id}, { 'title': 1, 'category': 1, 'url': 1, 'params': 1, 'price': 1 })
+                .find({category: cat._id}, { 'title': 1, 'category': 1, 'url': 1, 'params': 1, 'price': 1, images: 1 })
                 .populate('category', 'title')
                 .sort({'updated_at': -1})
                 .sort({'created_at': -1})
-                .limit(20)
+                .limit(5)
                 .exec(function (err, machinery) {
                   if (machinery) {
 
@@ -73,14 +73,16 @@ module.exports = function (router) {
             var value
               , price_type = (model.category._id+'' === '544677d1f23fda0000151807' || model.category._id+'' === '5446779ef23fda0000151806')?'руб./сутки':'руб./час';
             if (model.params && model.params.length > 0 && model.params[0].name !== '') {
-              value = model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' ' + price_type;
+              value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + model.params[0].name + ': ' + model.params[0].value + '<br>' + model.price + ' ' + price_type;
             } else {
-              value = model.category.title + ' ' + model.title + ' — ' + model.price + ' ' + price_type;
+              value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + model.price + ' ' + price_type;
             }
+            var img = (model.images && model.images.length > 0 && model.images[0] !== '') ? '<img src="img/machinery/' + model.images[0] + '">' : '<img src="img/blank.png">';
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,
-              value: value
+              value: value,
+              img: img
             };
             suggestions.push(curModel);
             callback();
@@ -93,14 +95,16 @@ module.exports = function (router) {
             var value
               , price_type = (model.category._id+'' === '544677d1f23fda0000151807' || model.category._id+'' === '5446779ef23fda0000151806')?'руб./сутки':'руб./час';
             if (model.params && model.params.length > 0 && model.params[0].name !== '') {
-              value = model.category.title + ' ' + model.title + ' (' + model.params[0].name + ': ' + model.params[0].value + ') — ' + model.price + ' ' + price_type;
+              value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + model.params[0].name + ': ' + model.params[0].value + '<br>' + model.price + ' ' + price_type;
             } else {
-              value = model.category.title + ' ' + model.title + ' — ' + model.price + ' ' + price_type;
+              value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + model.price + ' ' + price_type;
             }
+            var img = (model.images && model.images.length > 0 && model.images[0] !== '') ? '<img src="img/machinery/' + model.images[0] + '">' : '<img src="img/blank.png">';
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,
-              value: value
+              value: value,
+              img: img
             };
             suggestions.push(curModel);
             callback();

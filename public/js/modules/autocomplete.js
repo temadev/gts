@@ -8,6 +8,19 @@
       serviceUrl: '/machinery/list',
       onSelect: function (suggestion) {
         window.location.href = suggestion.url;
+      },
+      transformResult: function(response) {
+        response = JSON.parse(response);
+        var resultSuggestions = [];
+        $.map(response, function (jsonItem) {
+          if (typeof jsonItem != "string") {
+            $.map(jsonItem, function (suggestionItem) {
+              resultSuggestions.push({ value: suggestionItem.img + suggestionItem.value, data: suggestionItem.data, url: suggestionItem.url, img: suggestionItem.img });
+            });
+          }
+        });
+        response.suggestions = resultSuggestions;
+        return response;
       }
     });
 
