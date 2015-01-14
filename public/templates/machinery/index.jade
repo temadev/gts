@@ -26,10 +26,12 @@ block content
                                         small Стоимость аренды:
                                         if machinery.price && machinery.price !== '0'
                                             | #{machinery.price}&nbsp;
-                                        if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
-                                            | руб./сутки
+                                            if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
+                                                | руб./сутки
+                                            else
+                                                | руб./час
                                         else
-                                            | руб./час
+                                            | звоните
                                 .col-xs-7.text-right
                                     a.btn.btn-success.btn-lg.btn-order(href='#', data-toggle='modal', data-target='#modalOrder')
                                         i.fa.fa-print.pull-left

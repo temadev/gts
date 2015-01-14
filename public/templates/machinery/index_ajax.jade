@@ -1,0 +1,39 @@
+block content
+    .myBoard
+        button.close(type='button', data-dismiss='modal', aria-hidden='true'): i.fa.fa-times
+        .clearfix.mrg2
+            .col-md-5
+                if (user && user.role == 'admin')
+                    a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
+                if (machinery.images && machinery.images.length > 0 && machinery.images[0] !== '')
+                    .thumb: img(src='img/machinery/#{machinery.images[0]}')
+            .col-md-7
+                small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
+                h1= machinery.title
+                .row.order
+                    .col-xs-5
+                        h3.price
+                            small Стоимость аренды:
+                            if machinery.price && machinery.price !== '0'
+                                | #{machinery.price}&nbsp;
+                                if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
+                                    | руб./сутки
+                                else
+                                    | руб./час
+                            else
+                                | звоните
+                    .col-xs-7.text-right
+                        a.btn.btn-success.btn-lg.btn-order(href='#', data-toggle='modal', data-target='#modalOrder')
+                            i.fa.fa-print.pull-left
+                            | Оставить заявку
+                            if machinery.region[0] && machinery.region[0].smena
+                                small Минимальный заказ — #{machinery.region[0].smena}
+                p!= machinery.content
+                if (machinery.params && machinery.params.length > 0 && machinery.params[0].name !== '')
+                    .panel.panel-default
+                        .panel-heading Характеристики
+                        table.table
+                            each param in machinery.params
+                                tr
+                                    td= param.name
+                                    td= param.value

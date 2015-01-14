@@ -35,7 +35,7 @@ block content
                                         tbody
                                             each machine in machinery
                                                 tr
-                                                    td: a(href='machinery/#{machine.url}')= machine.title
+                                                    td: a(href='machinery/#{machine.url}', data-toggle='modal', data-target='#modalMachinery')= machine.title
                                                     td #{machine.params[0].value}
                                                     if (machine.params[1])
                                                         td #{machine.params[1].value}
@@ -60,3 +60,18 @@ block content
         .allotted-2: .container
             article.seo(role='article')
                 != category.seo.content
+
+block body_child
+    #modalMachinery.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+
+    #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true'): i.fa.fa-times
+                    h4#modalOrderLabel.modal-title Оставить заявку
+                .modal-body#modalOrderTitle
+                .modal-footer
+                    button.btn.btn-danger#modalOrderBtn(type='submit', data-csrf='#{_csrf}') Оставить заявку

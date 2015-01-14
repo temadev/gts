@@ -145,7 +145,12 @@ module.exports = function (router) {
                 res.json({ machinery: machinery });
               },
               html: function () {
-                res.render('machinery/index', { machinery: machinery });
+                if (req.xhr) {
+                  res.render('machinery/index_ajax', { machinery: machinery });
+                }
+                else {
+                  res.render('machinery/index', { machinery: machinery });
+                }
               }
             });
           });
