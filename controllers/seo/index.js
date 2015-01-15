@@ -9,7 +9,7 @@ var Machinery = require('../../models/machinery')
 
 module.exports = function (router) {
 
-  router.get('/machinery', auth.isAuthenticated(), function (req, res) {
+  router.get('/machinery', auth.isAuthenticated('admin'), function (req, res) {
     Machinery
       .find({})
       .populate('category', 'title')
@@ -19,7 +19,7 @@ module.exports = function (router) {
       });
   });
 
-  router.get('/machinery/list', auth.isAuthenticated(), function (req, res) {
+  router.get('/machinery/list', auth.isAuthenticated('admin'), function (req, res) {
     Machinery
       .find({})
       .populate('category', 'title')

@@ -102,6 +102,30 @@
         "name":"path:./lib/nav",
         "method": "categories"
       }
+    },
+
+    "session": {
+      "enabled": true,
+      "priority": 100,
+      "module": {
+        "name": "path:./lib/redis-session",
+        "arguments": [
+          {
+            "key": "sid",
+            "secret": "20648005b69c4b15bdebe919f336dfbfc29453db",
+            "cookie": {
+              "path": "/",
+              "httpOnly": true,
+              "secure": false,
+              "maxAge": 86400000
+            }
+          },
+          {
+            "url": "redis://rediscloud:5CFESSXBIoc0Lmhq@pub-redis-15216.eu-west-1-2.1.ec2.garantiadata.com:15216"
+          }
+        ]
+      }
     }
+
   }
 }
