@@ -112,7 +112,7 @@ module.exports = function (router) {
         });
       },
       page: function (callback) {
-        Page.find({}, 'url', function (err, items) {
+        Page.find({url: {$ne: 'test'}}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
             var url = { url: '/page/' + item.url };
             urls.push(url);
