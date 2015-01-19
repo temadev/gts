@@ -5,7 +5,8 @@ var auth = require('../lib/auth')
   , async = require('async')
   , sm = require('sitemap')
   , Category = require('../models/category')
-  , Machinery = require('../models/machinery');
+  , Machinery = require('../models/machinery')
+  , Page = require('../models/page');
 
 
 module.exports = function (router) {
@@ -103,6 +104,17 @@ module.exports = function (router) {
         Machinery.find({}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
             var url = { url: '/machinery/' + item.url };
+            urls.push(url);
+            callback();
+          }, function () {
+            callback();
+          });
+        });
+      },
+      page: function (callback) {
+        Page.find({}, 'url', function (err, items) {
+          async.each(items, function (item, callback) {
+            var url = { url: '/page/' + item.url };
             urls.push(url);
             callback();
           }, function () {
