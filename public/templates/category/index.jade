@@ -20,7 +20,8 @@ block content
                             .col-md-10
                                 small.category: a(href='/')= category.category.title
                                 h1.subTitle= category.title
-                                p!= category.content
+                                .hidden-xs
+                                    p!= category.content
                         if (machinery[0])
                             .row
                                 .table-responsive
@@ -57,7 +58,7 @@ block content
                 include ../partials/sidebar
 
     if (category.seo && category.seo.content)
-        .allotted-2: .container
+        .allotted-2.hidden-xs: .container
             article.seo(role='article')
                 != category.seo.content
 

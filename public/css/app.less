@@ -93,6 +93,10 @@ textarea {
 
 .lead { font-size: 17px; font-weight: 300; }
 
+.table-responsive {
+  border: none;
+}
+
 /**** END UNIVERSAL CLASSES ****/
 
 /* START styles for titles */
@@ -186,8 +190,15 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
   }
 
+  .category {
+    text-align: center;
+    margin-top: 10px;
+  }
+
   .subTitle {
     font-size: 18px;
+    text-align: center;
+    margin: 0;
   }
 }
 
@@ -238,14 +249,14 @@ h1, h2, h3, h4, h5, h6 {
       float: left;
       margin: 0 30px 10px 0;
       &.dropdown {
-//        & > a {
-//          font-size: 16px;
-//          padding: 8px 12px 9px;
-//          border: 1px solid rgba(8, 100, 176, 0.1);
-//          &:hover {
-//            border-color: #0864B0;
-//          }
-//        }
+        //        & > a {
+        //          font-size: 16px;
+        //          padding: 8px 12px 9px;
+        //          border: 1px solid rgba(8, 100, 176, 0.1);
+        //          &:hover {
+        //            border-color: #0864B0;
+        //          }
+        //        }
         &.open > a {
           background: none;
           text-decoration: none;
@@ -311,7 +322,7 @@ h1, h2, h3, h4, h5, h6 {
   #headMenu {
     .navbar-collapse {
       & > ul > li {
-//        margin-right: 34px;
+        //        margin-right: 34px;
         & > a {
           font-size: 15px;
         }
@@ -387,7 +398,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 @media (max-width: 767px) {
   #headMenu {
     .navbar-brand {
@@ -456,7 +466,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   #logo img {
-//    width: auto;
+    //    width: auto;
     max-width: 100%;
   }
 }
@@ -786,24 +796,24 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 10px 40px rgba(31, 44, 60, 0.5);
     h3 {
       margin-bottom: 0;
-//      font-size: 4em;
+      //      font-size: 4em;
       font-weight: 600;
       text-transform: uppercase;
       small {
         display: block;
-        color: #FFF;
+        color: #fff;
         text-shadow: none;
         font-size: 40%;
         span {
           padding: 8px 16px;
-          background: #FCC400;
+          background: #fcc400;
         }
       }
     }
     .price {
-//      font-size: 2.5em;
+      //      font-size: 2.5em;
       text-transform: uppercase;
-      background: #428BCA;
+      background: #428bca;
       float: left;
       padding: 0 10px;
     }
@@ -906,7 +916,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0; right: 0;
     height: 100%;
     width: 100%;
-//    background: rgba(0, 0, 0, 0.5);
+    //    background: rgba(0, 0, 0, 0.5);
     box-shadow: inset 0 -200px 150px -150px rgba(31, 44, 60, 0.5);
   }
 }
@@ -1051,6 +1061,9 @@ h1, h2, h3, h4, h5, h6 {
   .widget-1 {
     padding-top: 20px;
     padding-bottom: 20px;
+    .title {
+      margin: 20px 0 30px;
+    }
   }
 }
 
@@ -1097,6 +1110,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
+    .title {
+      margin: 20px 0;
+    }
   }
 }
 
@@ -1169,6 +1185,14 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 14px;
       }
     }
+  }
+}
+
+@media (max-width: 339px) {
+  .grid-1 .item p {
+    font-weight: 300;
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 }
 
@@ -1355,7 +1379,7 @@ h1, h2, h3, h4, h5, h6 {
     img { border: 3px solid transparent; }
     &:hover {
       text-decoration: none;
-      img { border-color: #2E7DD8; }
+      img { border-color: #2e7dd8; }
     }
   }
   li a span {
@@ -1390,6 +1414,7 @@ h1, h2, h3, h4, h5, h6 {
       width: 50%;
     }
   }
+
   #material {
     li {
       width: 33.3%;
@@ -1398,11 +1423,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 459px) {
-  #portfolio,
-  #material {
-    li {
-      float: none;
-      width: auto;
+  #portfolio li {
+    float: none;
+    width: auto;
+  }
+
+  #material li {
+    float: none;
+    width: 50%;
+    a {
+      padding: 10px 20px;
+      font-size: 16px;
     }
   }
 }
@@ -1606,7 +1637,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .myBoard {
   h1 {
-    color: #0864B0;
+    color: #0864b0;
     font-weight: 600;
     letter-spacing: -2px;
     text-transform: uppercase;
@@ -1614,8 +1645,8 @@ h1, h2, h3, h4, h5, h6 {
   .order {
     padding: 10px 0;
     margin: 0 0 15px;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     & > div {
       padding: 0;
     }
@@ -1634,7 +1665,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
     border-radius: 2px;
     font-weight: 700;
-    text-shadow: 0 1px #409B40;
+    text-shadow: 0 1px #409b40;
     line-height: 1;
     padding: 13px 18px;
     .fa {
@@ -1659,11 +1690,11 @@ h1, h2, h3, h4, h5, h6 {
   .panel-default {
     margin-top: 20px;
     border-radius: 2px;
-    border: 1px solid #C2D7E8;
+    border: 1px solid #c2d7e8;
     .panel-heading {
       font-weight: bold;
-      background: #E5F3FF;
-      border-color: #C2D7E8;
+      background: #e5f3ff;
+      border-color: #c2d7e8;
     }
   }
 }
@@ -1683,6 +1714,11 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 480px) {
   .myBoard {
     margin-bottom: 20px;
+    padding-top: 20px;
+    h1 {
+      text-align: center;
+      font-size: 24px;
+    }
   }
 }
 
@@ -1758,7 +1794,6 @@ body.home #content {
 
 /* START #sidebar */
 #sidebar {
-
 }
 
 /* END #sidebar */

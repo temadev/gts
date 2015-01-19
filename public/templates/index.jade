@@ -10,8 +10,9 @@ block content
     #main
         .container
             .col-md-12.text-center
-                h1.pageTitle Спецтехника в аренду
-                p.mrg2.lead Наша компания располагает богатым автопарком спецтехники: экскаваторы, автокраны, фронтальные погрузчики, бортовые автомобили, длинномеры, бульдозеры, тралы, автовышки и др.
+                .hidden-xs
+                    h1.pageTitle Спецтехника в аренду
+                    p.mrg2.lead Наша компания располагает богатым автопарком спецтехники: экскаваторы, автокраны, фронтальные погрузчики, бортовые автомобили, длинномеры, бульдозеры, тралы, автовышки и др.
 
                 ul#filter.clearfix
                     li.current: a(rel='all', href='#') Вся техника
@@ -61,7 +62,7 @@ block content
                     p Свой штат<br /> опытных механиков
     // END .widget-1
     // START .slider
-    section.slider
+    section.slider.hidden-xs
         .container
             #bsCarousel.carousel.slide(data-ride='carousel')
                 .carousel-inner

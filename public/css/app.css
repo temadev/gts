@@ -85,6 +85,9 @@ textarea {
   font-size: 17px;
   font-weight: 300;
 }
+.table-responsive {
+  border: none;
+}
 /**** END UNIVERSAL CLASSES ****/
 /* START styles for titles */
 h1,
@@ -166,8 +169,14 @@ h6 {
   .title {
     font-size: 20px;
   }
+  .category {
+    text-align: center;
+    margin-top: 10px;
+  }
   .subTitle {
     font-size: 18px;
+    text-align: center;
+    margin: 0;
   }
 }
 /* END styles for titles */
@@ -648,17 +657,17 @@ h6 {
 }
 #headPromo .meadiHolder .carousel-caption h3 small {
   display: block;
-  color: #FFF;
+  color: #fff;
   text-shadow: none;
   font-size: 40%;
 }
 #headPromo .meadiHolder .carousel-caption h3 small span {
   padding: 8px 16px;
-  background: #FCC400;
+  background: #fcc400;
 }
 #headPromo .meadiHolder .carousel-caption .price {
   text-transform: uppercase;
-  background: #428BCA;
+  background: #428bca;
   float: left;
   padding: 0 10px;
 }
@@ -877,6 +886,9 @@ h6 {
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  .widget-1 .title {
+    margin: 20px 0 30px;
+  }
 }
 /* END .widget-1  */
 /* START .widget-1  */
@@ -916,6 +928,9 @@ h6 {
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+  .widget-2 .title {
+    margin: 20px 0;
   }
 }
 /* END .widget-1  */
@@ -975,6 +990,13 @@ h6 {
   }
   .grid-1 .item p {
     font-size: 14px;
+  }
+}
+@media (max-width: 339px) {
+  .grid-1 .item p {
+    font-weight: 300;
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 }
 /* END .grid-1  */
@@ -1135,7 +1157,7 @@ h6 {
   text-decoration: none;
 }
 #material li a:hover img {
-  border-color: #2E7DD8;
+  border-color: #2e7dd8;
 }
 #material li a span {
   font-family: 'Roboto Condensed';
@@ -1164,10 +1186,17 @@ h6 {
   }
 }
 @media (max-width: 459px) {
-  #portfolio li,
-  #material li {
+  #portfolio li {
     float: none;
     width: auto;
+  }
+  #material li {
+    float: none;
+    width: 50%;
+  }
+  #material li a {
+    padding: 10px 20px;
+    font-size: 16px;
   }
 }
 /* END filtr styles */
@@ -1327,7 +1356,7 @@ h6 {
   text-align: center;
 }
 .myBoard h1 {
-  color: #0864B0;
+  color: #0864b0;
   font-weight: 600;
   letter-spacing: -2px;
   text-transform: uppercase;
@@ -1335,8 +1364,8 @@ h6 {
 .myBoard .order {
   padding: 10px 0;
   margin: 0 0 15px;
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .myBoard .order > div {
   padding: 0;
@@ -1355,7 +1384,7 @@ h6 {
   text-align: left;
   border-radius: 2px;
   font-weight: 700;
-  text-shadow: 0 1px #409B40;
+  text-shadow: 0 1px #409b40;
   line-height: 1;
   padding: 13px 18px;
 }
@@ -1380,12 +1409,12 @@ h6 {
 .myBoard .panel-default {
   margin-top: 20px;
   border-radius: 2px;
-  border: 1px solid #C2D7E8;
+  border: 1px solid #c2d7e8;
 }
 .myBoard .panel-default .panel-heading {
   font-weight: bold;
-  background: #E5F3FF;
-  border-color: #C2D7E8;
+  background: #e5f3ff;
+  border-color: #c2d7e8;
 }
 @media (max-width: 991px) and (min-width: 768px) {
   .myBoard {
@@ -1400,6 +1429,11 @@ h6 {
 @media (max-width: 480px) {
   .myBoard {
     margin-bottom: 20px;
+    padding-top: 20px;
+  }
+  .myBoard h1 {
+    text-align: center;
+    font-size: 24px;
   }
 }
 /* END .myBoard */

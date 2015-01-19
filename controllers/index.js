@@ -11,31 +11,36 @@ var auth = require('../lib/auth')
 module.exports = function (router) {
 
 
-  router.get('/rental/:old', function (req, res, next) {
+  router.get('/rental/:category', function (req, res, next) {
 
-    async.parallel({
-      category: function (callback) {
-        Category.findOne({'seo.canonical': req.url}, 'url', function (err, item) {
-          console.log(item);
-          callback(null, item);
-        });
-      },
-      machinery: function (callback) {
-        Machinery.findOne({'seo.canonical': req.url}, 'url', function (err, item) {
-          console.log(item);
-          callback(null, item);
-        });
+    var url = req.originalUrl;
+
+    if (url.slice(-1) !== '/') {
+      url = url + '/';
+    }
+
+    Category.findOne({'seo.canonical': url}, 'url', function (err, item) {
+      if (item) {
+        res.redirect(301, '/category/' + item.url);
+      } else {
+        next();
       }
-    }, function (err, result) {
-      if (result.category || result.machinery) {
-        if (result.category) {
-          console.log(result.category);
-          res.redirect(301, '/category/' + result.category.url);
-        }
-        if (result.machinery) {
-          console.log(result.machinery);
-          res.redirect(301, '/machinery/' + result.machinery.url);
-        }
+    });
+
+  });
+
+
+  router.get('/rental/:category/:machinery', function (req, res, next) {
+
+    var url = req.originalUrl;
+
+    if (url.slice(-1) !== '/') {
+      url = url + '/';
+    }
+
+    Machinery.findOne({'seo.canonical': url}, 'url', function (err, item) {
+      if (item) {
+        res.redirect(301, '/machinery/' + item.url);
       } else {
         next();
       }
