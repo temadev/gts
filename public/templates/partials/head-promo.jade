@@ -2,12 +2,12 @@
     #carousel.carousel.slide.c-fade(data-ride='carousel')
         .carousel-inner
             if (nav.menu['Главная']['active'])
-                .active.item
+                //.active.item
                     picture
                         source(srcset='img/slide1_small.jpg', media='(max-width: 768px)')
                         source(srcset='img/slide1.jpg')
                         img(src='img/slide1.jpg', alt='ГТС ГлобалТехноСтрой')
-                .item
+                //.item
                     picture
                         source(srcset='img/slide2_small.jpg', media='(max-width: 768px)')
                         source(srcset='img/slide2.jpg')
@@ -16,18 +16,42 @@
                         h3
                             span Сочи 2014
                         .price Строительство спорткомплекса
-                .item
+                .active.item
                     picture
                         source(srcset='img/slide3_small.jpg', media='(max-width: 768px)')
                         source(srcset='img/slide3.jpg')
-                        img(src='img/slide3.jpg', alt='Погрузчик JCB3CX')
+                        img(src='img/slide3.jpg', alt='Погрузчик JCB 3CX')
                     .carousel-caption.hidden-xs
-                        h3
-                            small: span Специальная цена
-                            span Погрузчик JCB3CX
-                        .price
-                            | 1200
-                            span руб/час
+                        a(href='machinery/jcb-3cx', data-toggle='modal', data-target='#modalMachinery')
+                            .description.hidden-sm: span Специальная цена
+                            h3 Погрузчик JCB 3CX
+                            div
+                                .price 1250 <span>руб/час</span>
+                                .order Оставить заявку
+                .item
+                    picture
+                        source(srcset='img/slide4_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/slide4.jpg')
+                        img(src='img/slide4.jpg', alt='Погрузчик JCB 4CX')
+                    .carousel-caption.hidden-xs
+                        a(href='machinery/jcb-4cx', data-toggle='modal', data-target='#modalMachinery')
+                            .description.hidden-sm: span Специальная цена
+                            h3 Погрузчик JCB 4CX
+                            div
+                                .price 1350 <span>руб/час</span>
+                                .order Оставить заявку
+                .item
+                    picture
+                        source(srcset='img/slide5_small.jpg', media='(max-width: 768px)')
+                        source(srcset='img/slide5.jpg')
+                        img(src='img/slide5.jpg', alt='Экскаватор JCB JS160')
+                    .carousel-caption.hidden-xs
+                        a(href='machinery/jcb-js160', data-toggle='modal', data-target='#modalMachinery')
+                            .description.hidden-sm: span Специальная цена
+                            h3 Экскаватор JCB JS160
+                            div
+                                .price 1300 <span>руб/час</span>
+                                .order Оставить заявку
             else
                 .active.item
                     picture

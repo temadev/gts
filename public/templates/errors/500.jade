@@ -1,4 +1,12 @@
-extends ../layouts/page
+extends ../layouts/main
+block seo
+    title Технические работы
 block content
-    h1 500
-    pre #{err}
+    // START #content
+    .container
+        .myBoard
+            .clearfix.mrg2
+                .col-md-12
+                    h1.subTitle(style='font-size: 72px') Технические работы
+                    p В данный момент мы проводим обновление сайта, пожалуйста, возвращайтесь через несколько минут...
+    // END #content

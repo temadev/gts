@@ -1,5 +1,13 @@
-extends ../layouts/page
+extends ../layouts/main
+block seo
+    title Ошибка 404
 block content
-    h1 #{arguments}
-    p #{description}
-    | 404
+    // START #content
+    .container
+        .myBoard
+            .clearfix.mrg2
+                .col-md-12
+                    h1.subTitle(style='font-size: 72px') Ошибка 404
+                    p Страницы не существует или она была удалена
+                    p: a.btn.btn-default(href='/') На главную →
+    // END #content

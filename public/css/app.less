@@ -350,6 +350,16 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-collapse {
       border-top: 1px solid transparent;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      .pages {
+        margin-right: 0;
+        ul {
+          text-align: right;
+          li {
+            padding-right: 0;
+            padding-left: 10px;
+          }
+        }
+      }
     }
     .navbar-collapse.collapse {
       display: none !important;
@@ -390,7 +400,7 @@ h1, h2, h3, h4, h5, h6 {
       margin-left: 10px;
     }
     .navbar-toggle {
-      margin-top: 3px;
+      margin-top: 18px;
     }
     li {
       margin-right: 0;
@@ -413,6 +423,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 639px) {
   #headMenu {
+    margin-left: 0;
     .dropdown-menu {
       & > li > a {
         padding: 8px 0;
@@ -789,85 +800,80 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 120px !important;
   }
   .meadiHolder .carousel-caption {
-    text-align: right;
+    text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 35px;
-    text-shadow: 0 10px 40px rgba(31, 44, 60, 0.5);
+    text-shadow: none;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .description span {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #fcc400;
+      text-transform: uppercase;
+    }
     h3 {
+      display: inline-block;
+      padding: 6px 16px;
       margin-bottom: 0;
-      //      font-size: 4em;
       font-weight: 600;
       text-transform: uppercase;
-      small {
-        display: block;
-        color: #fff;
-        text-shadow: none;
-        font-size: 40%;
-        span {
-          padding: 8px 16px;
-          background: #fcc400;
-        }
-      }
+      text-decoration: none;
+      background: #236DAE;
+    }
+    .order {
+      display: inline-block;
+      text-transform: uppercase;
+      background: #5cb85c;
+      padding: 4px 16px;
+      font-size: 18px;
     }
     .price {
-      //      font-size: 2.5em;
+      display: inline-block;
       text-transform: uppercase;
-      background: #428bca;
-      float: left;
-      padding: 0 10px;
+      background: #4a4a4a;
+      padding: 4px 16px;
+      font-size: 18px;
     }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
     .meadiHolder .carousel-caption {
-      h3 {
-        font-size: 1.8em;
-        small {
-          float: left;
-          line-height: 2.8;
-        }
+      h3 { font-size: 28px; }
+      .description span {
+        padding: 4px 16px;
+        font-size: 14px;
       }
-      .price {
-        font-size: 1em;
-        float: right;
-      }
+      .order, .price { font-size: 12px; }
     }
   }
 
   @media (min-width: 992px) and (max-width: 1199px) {
     .meadiHolder .carousel-caption {
-      text-align: left;
-      h3 {
-        font-size: 2.6em;
-        small span {
-          padding: 4px 10px;
-        }
+      h3 { font-size: 28px; }
+      .description span {
+        padding: 4px 16px;
+        font-size: 14px;
       }
+      .order, .price { font-size: 12px; }
     }
   }
 
   @media (min-width: 1200px) {
     .meadiHolder .carousel-caption {
-      text-align: left;
       margin-bottom: 50px;
-      h3 {
-        font-size: 3.6em;
-        small span {
-          padding: 6px 12px;
-        }
-      }
+      h3 { font-size: 36px; }
+      .description span, .order, .price { font-size: 14px; }
     }
   }
 
   @media (min-width: 1400px) {
     .meadiHolder .carousel-caption {
-      h3 {
-        font-size: 4.2em;
-      }
-      .price {
-        font-size: 1.5em;
-      }
+      h3 { font-size: 48px; }
+      .description span, .order, .price { font-size: 18px; }
     }
   }
 
@@ -879,8 +885,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .myForm {
     position: absolute;
-    top: 50%; left: 50%;
-    z-index: 9;
+    top: 40%; left: 50%;
+    z-index: 10;
     width: 722px;
     margin-top: -30px;
     margin-left: -360px;
@@ -1474,11 +1480,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 1199px) and (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199px) {
+  #header {
+    .sitePhone {
+      font-size: 21px;
+    }
+  }
   .allotted {
     .sitePhone {
       font-size: 48px;
-
       span {
         font-size: 26px;
       }
@@ -1495,7 +1505,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 991px) and (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 991px)  {
   .allotted {
     .sitePhone {
       font-size: 32px;
@@ -1506,7 +1516,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 639px) and (min-width: 440px) {
+@media (min-width: 440px) and (max-width: 639px) {
   #header .sitePhone {
     display: none;
   }
@@ -1543,6 +1553,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 65px;
   padding-bottom: 65px;
   background: #e9eaed;
+  &.top {
+    padding-top: 35px;
+    padding-bottom: 0;
+  }
 }
 
 /* .allotted */
@@ -1591,6 +1605,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: -30px;
     right: 5px;
+    margin-top: 0;
   }
 
   #header .col-xs-4 {
@@ -1718,6 +1733,7 @@ h1, h2, h3, h4, h5, h6 {
     h1 {
       text-align: center;
       font-size: 24px;
+      margin-bottom: 10px;
     }
   }
 }

@@ -9,15 +9,19 @@ html(lang='en')
     section#wrapper
       header#header(class='clearfix', role='banner')
         .container: .row
-          .col-xs-4.col-sm-3
+          .col-xs-4.col-md-3
             #logo: a(href='/'): img(src='img/logo.png', width='275')
-          .col-xs-8.col-sm-6
+          .col-xs-8.col-md-6
             include ../partials/top-navbar
-          .col-sm-3.hidden-xs
+          .col-md-3.hidden-sm.hidden-xs
             .sitePhone.text-right 8-800-500-30-70
               div <span>(4852)</span> 57-01-01, 90-01-01
-      section#headPromo
+      section#headPromo.hidden-xs
         include ../partials/head-promo
+      section.allotted.top.visible-xs(role='complementary')
+        h4.subTitle.text-center Аренда спецтехники
+        .sitePhone.text-center 8-800-500-30-70
+          div <span>(4852)</span> 57-01-01, 90-01-01
       section#content.clearfix
         block content
       section.allotted(role='complementary')
