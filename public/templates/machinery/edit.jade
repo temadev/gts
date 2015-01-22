@@ -50,12 +50,12 @@ block content
                                     input.form-control(type='text', name='images[]')
                     fieldset
                         each param, index in machinery.params
-                            .form-group.clonedInput#param1
+                            .form-group.clonedInput(id='param#{index+1}')
                                 label.col-sm-2.control-label Характеристики
                                 .col-sm-4
-                                    input.form-control#paramName1(type='text', name='params[#{index}][name]', value='#{param.name}')
+                                    input.form-control(id='paramName#{index+1}', type='text', name='params[#{index}][name]', value='#{param.name}')
                                 .col-sm-4
-                                    input.form-control#paramValue1(type='text', name='params[#{index}][value]', value='#{param.value}')
+                                    input.form-control(id='paramValue#{index+1}', type='text', name='params[#{index}][value]', value='#{param.value}')
                         .form-group
                             .col-sm-4.col-sm-offset-2
                                 button#paramAdd.btn.btn-default Добавить поле

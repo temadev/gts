@@ -15,7 +15,7 @@
       newElem.children('div').children(':last').attr('id', 'paramValue' + newNum).attr('name', 'params['+num+'][value]');
       param.after(newElem);
       paramDel.attr('disabled', false);
-      if (newNum == 5)
+      if (newNum == 10)
         paramAdd.attr('disabled', 'disabled');
     });
 
