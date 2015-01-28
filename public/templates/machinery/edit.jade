@@ -17,6 +17,10 @@ block content
                             .col-sm-6
                                 input.form-control#url(type='text', name='url', value='#{machinery.url?machinery.url:""}')
                         .form-group
+                            label.col-sm-2.control-label Порядок
+                            .col-sm-3
+                                input.form-control(type='number', name='sort', value='#{machinery.sort ? machinery.sort : "0"}')
+                        .form-group
                             label.col-sm-2.control-label Категория
                             .col-sm-6
                                 select.form-control(name='category')

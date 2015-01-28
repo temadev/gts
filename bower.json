@@ -22,6 +22,9 @@
     "modernizr": "~2.8.2",
     "fastclick": "~1.0.2",
     "devbridge-autocomplete": "~1.2.9",
-    "gmaps": "~0.4.14"
+    "gmaps": "~0.4.14",
+    "form.validation": "~0.5.3",
+    "bs-datetimepicker": "~4.0.0",
+    "moment": "~2.9.0"
   }
 }

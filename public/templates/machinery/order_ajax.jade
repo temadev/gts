@@ -1,0 +1,134 @@
+form#orderForm
+  .modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true'): i.fa.fa-times
+    h4#modalOrderLabel.modal-title Заявка на аренду спецтехники
+  .modal-body#modalOrderTitle
+    .row
+      .col-sm-6
+        .form-group
+          label(for='orderName') Имя
+          input.form-control#orderName(type='text', name='orderName', placeholder='Имя')
+      .col-sm-6
+        .form-group
+          label(for='orderPhone') Телефон
+          input.form-control#orderPhone(type='text', name='orderPhone', placeholder='Телефон')
+    hr
+    .row
+      .col-sm-6
+        .form-group
+          label(for='orderDateBegin') Дата начала
+          input.form-control.datetimepicker#orderDateBegin(type='text', name='orderDateBegin', placeholder='Дата начала', data-format='DD.MM.YYYY')
+      .col-sm-6
+        .form-group
+          label(for='orderDateEnd') Дата конца
+          input.form-control.datetimepicker#orderDateEnd(type='text', name='orderDateEnd', placeholder='Дата конца', data-format='DD.MM.YYYY')
+      .col-sm-6
+        .form-group
+          label(for='orderTimeBegin') Время начала
+          input.form-control.datetimepicker#orderTimeBegin(type='text', name='orderTimeBegin', placeholder='Время начала', data-format='LT')
+      .col-sm-6
+        .form-group
+          label(for='orderTime') Смена, час.
+          input.form-control#orderTime(type='text', name='orderTime', placeholder='Смена, час.')
+      .col-sm-12
+        .form-group
+          label(for='orderComment') Комментарий
+          textarea.form-control#orderComment(rows='3', name='orderComment', placeholder='Комментарий')
+      .col-sm-12
+        p#orderResult(style='display:none')
+  .modal-footer.text-center
+    input#orderMachinery(type='hidden', name='orderMachinery', value='#{machinery}')
+    input#orderCategory(type='hidden', name='orderCategory', value='#{category}')
+    button.btn.btn-warning.btn-lg#modalOrderBtn(type='submit', data-csrf='#{_csrf}') Отправить заявку
+
+script.
+  var Selector = '.datetimepicker';
+  $(Selector).each(function () {
+    var $this = $(this)
+            , options = $this.data();
+    $this.datetimepicker($.extend(
+            options,
+            {
+              locale: moment.locale('ru'),
+              icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-arrow-left',
+                next: 'fa fa-arrow-right'
+              }
+            }));
+  });
+
+  $('#orderDateBegin').on('dp.change', function (e) {
+    $('#orderDateEnd').data('DateTimePicker').minDate(e.date);
+  });
+  $('#orderDateEnd').on('dp.change', function (e) {
+    $('#orderDateBegin').data('DateTimePicker').maxDate(e.date);
+  });
+
+  $('#orderForm').bootstrapValidator({
+    message: 'Поле заполнено неверно',
+    container: 'tooltip',
+    feedbackIcons: {
+      valid: 'fa fa-check',
+      invalid: 'fa fa-times',
+      validating: 'fa fa-refresh'
+    },
+    live: 'submitted',
+    fields: {
+      orderName: {
+        validators: {
+          notEmpty: {
+            message: 'Пожалуйста, представьтесь'
+          }
+        }
+      },
+      orderPhone: {
+        validators: {
+          notEmpty: {
+            message: 'Укажите телефон для связи'
+          }
+        }
+      }
+    }
+  }).on('success.form.bv', function (e) {
+
+    e.preventDefault();
+
+    var $form = $(e.target)
+      , validator = $form.data('bootstrapValidator')
+      , submitButton = validator.getSubmitButton();
+
+    submitButton.attr('disabled', true).html('<i class="fa fa-spin fa-circle-o-notch"></i> Пожалуйста, ожидайте...');
+
+    $.ajax({
+      type: 'POST',
+      url: '/order',
+      data: {
+        _csrf: submitButton.data('csrf'),
+        name: $('#orderName').val(),
+        phone: $('#orderPhone').val(),
+        dateBegin: $('#orderDateBegin').val(),
+        dateEnd: $('#orderDateEnd').val(),
+        timeBegin: $('#orderTimeBegin').val(),
+        time: $('#orderTime').val(),
+        comment: $('#orderComment').val(),
+        machinery: $('#orderMachinery').val(),
+        category: $('#orderCategory').val()
+      },
+      success: function (result) {
+        $('#orderResult').removeClass().addClass('bg-success').text('Ваша заявка успешно отправлена, наши менеджеры свяжутся с вами в ближайшее время').fadeIn();
+        submitButton.html('Отправить заявку');
+        setTimeout(function () {
+          $('#modalOrder').modal('hide');
+        }, 2000);
+      },
+      error: function (result) {
+        $('#orderResult').removeClass().addClass('bg-danger').text('Возникла ошибка при размещении заявки, пожалуйста, свяжитесь с нашими менеджерами по телефону').fadeIn();
+        submitButton.html('Отправить заявку');
+      }
+    });
+
+  });

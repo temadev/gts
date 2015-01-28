@@ -23,7 +23,7 @@ block content
                             else
                                 | звоните
                     .col-sm-7.text-right
-                        a.btn.btn-success.btn-lg.btn-order(href='#', data-toggle='modal', data-target='#modalOrder')
+                        a.btn.btn-success.btn-lg.btn-order(href='/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
                             i.fa.fa-print.pull-left
                             | Оставить заявку
                             if machinery.region[0] && machinery.region[0].smena

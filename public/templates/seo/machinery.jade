@@ -13,6 +13,7 @@ block content
             table#datatable.table.table-striped.table-bordered.dt-responsive(width='100%')
               thead
                 tr
+                  th
                   th.col-1 #
                   th.col-2 Рубрика
                   th.col-3 Модель
@@ -28,6 +29,8 @@ block content
               tbody
                 each machine, index in machinery
                   tr
+                    td
+                      a.btn.btn-default.btn-xs(href='/machinery/edit/#{machine._id}'): i.fa.fa-edit
                     td #{index + 1}
                     td #{machine.category.title}
                     td: a(href='/machinery/#{machine.url}') #{machine.title}
@@ -42,6 +45,7 @@ block content
                     td!= (machine.seo && machine.seo.content && machine.seo.content.length > 0) ? machine.seo.content.length : '<i class="fa fa-times text-danger"></i>'
               tfoot
                 tr
+                  th
                   th
                   th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Рубрика')
                   th: input.form-control.input-sm.datatable_input_col_search(type='text', placeholder='Модель')

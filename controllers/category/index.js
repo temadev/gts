@@ -21,10 +21,9 @@ module.exports = function (router) {
           next();
         }
         if (category) {
-//          console.log(category);
           Machinery.find({category: category})
+            .sort({'sort': 1})
             .exec(function (err, machinery) {
-//              console.log(machinery);
               res.format({
                 json: function () {
                   res.json({ category: category, machinery: machinery });

@@ -33,7 +33,7 @@ block content
                                         else
                                             | звоните
                                 .col-xs-7.text-right
-                                    a.btn.btn-success.btn-lg.btn-order(href='#', data-toggle='modal', data-target='#modalOrder')
+                                    a.btn.btn-success.btn-lg.btn-order(href='/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
                                         i.fa.fa-print.pull-left
                                         | Оставить заявку
                                         if machinery.region[0] && machinery.region[0].smena
@@ -59,9 +59,3 @@ block body_child
     #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
         .modal-dialog
             .modal-content
-                .modal-header
-                    button.close(type='button', data-dismiss='modal', aria-hidden='true'): i.fa.fa-times
-                    h4#modalOrderLabel.modal-title Оставить заявку
-                .modal-body#modalOrderTitle
-                .modal-footer
-                    button.btn.btn-danger#modalOrderBtn(type='submit', data-csrf='#{_csrf}') Оставить заявку

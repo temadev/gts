@@ -4,6 +4,7 @@
 var auth = require('../lib/auth')
   , async = require('async')
   , sm = require('sitemap')
+  , request = require('request')
   , Category = require('../models/category')
   , Machinery = require('../models/machinery')
   , Page = require('../models/page');
@@ -54,7 +55,7 @@ module.exports = function (router) {
 
     Category.find({category: {'$ne': null}})
       .populate('category', 'url')
-      .sort({ title: 1 })
+      .sort({title: 1})
       .exec(function (err, items) {
         var model = {
           seo: {
@@ -67,6 +68,43 @@ module.exports = function (router) {
 
         res.render('index', model);
       });
+
+  });
+
+
+  router.get('/order/:category/:machinery', function (req, res) {
+    async.parallel({
+      machinery: function (cb) {
+        Machinery.findOne({url: req.params.machinery}, {title: 1}).exec(function (err, machinery) {
+          cb(null, machinery.title);
+        });
+      },
+      category: function (cb) {
+        Category.findOne({url: req.params.category}, {title: 1}).exec(function (err, category) {
+          cb(null, category.title);
+        });
+      }
+    }, function (err, title) {
+      res.render('machinery/order_ajax', {category: title.category, machinery: title.machinery});
+    });
+  });
+
+
+  router.post('/order', function (req, res) {
+
+    var order = req.body
+      , url = encodeURI('http://95.86.207.16:3333/1c/hs/orders/add?name=' + order.name + '&phone=' + order.phone + '&dateBegin=' + order.dateBegin + '&dateEnd=' + order.dateEnd + '&timeBegin=' + order.timeBegin + '&time=' + order.time + '&comment=' + order.comment + '&machinery=' + order.machinery + '&category=' + order.category);
+
+    request({
+      url: url,
+      json: true
+    }, function (err, result) {
+      if (result && result.statusCode === 200) {
+        res.send(200);
+      } else {
+        res.send(408);
+      }
+    });
 
   });
 
@@ -85,14 +123,14 @@ module.exports = function (router) {
   router.get('/sitemap.xml', function (req, res) {
 
     var urls = [
-      { url: '/' }
+      {url: '/'}
     ];
 
     async.parallel({
       category: function (callback) {
         Category.find({}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
-            var url = { url: '/category/' + item.url };
+            var url = {url: '/category/' + item.url};
             urls.push(url);
             callback();
           }, function () {
@@ -103,7 +141,7 @@ module.exports = function (router) {
       machinery: function (callback) {
         Machinery.find({}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
-            var url = { url: '/machinery/' + item.url };
+            var url = {url: '/machinery/' + item.url};
             urls.push(url);
             callback();
           }, function () {
@@ -114,7 +152,7 @@ module.exports = function (router) {
       page: function (callback) {
         Page.find({url: {$ne: 'test'}}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
-            var url = { url: '/page/' + item.url };
+            var url = {url: '/page/' + item.url};
             urls.push(url);
             callback();
           }, function () {

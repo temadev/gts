@@ -88,6 +88,14 @@ textarea {
 .table-responsive {
   border: none;
 }
+.has-feedback .form-control-feedback {
+  top: 35px;
+  right: 0;
+}
+.form-horizontal .has-feedback .form-control-feedback {
+  top: 0;
+  right: 15px;
+}
 /**** END UNIVERSAL CLASSES ****/
 /* START styles for titles */
 h1,
@@ -1687,4 +1695,7 @@ body.home #content {
   h3 {
     page-break-after: avoid;
   }
+}
+#orderForm p {
+  padding: 15px;
 }
