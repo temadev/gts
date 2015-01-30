@@ -9,6 +9,10 @@ nav#headMenu.navbar.navbar-default(role='navigation')
         li: a(href='/page/o-kompanii') О компании
         li: a(href='/page/sotrudnichestvo') Сотрудничество
         li: a(href='/page/kontakty') Контакты
+        li: a.text-danger(href='/doc/gts-dogovor.pdf', style='text-decoration:none', target='_blank')
+          | &nbsp;
+          i.fa.fa-file-text-o.fa-lg
+          | &nbsp;Бланк договора
     ul.nav.navbar-nav
       +build-menu-items(nav.menu)
       li: a(href='/page/pesok-shheben-beton') Песок, щебень, бетон
