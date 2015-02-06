@@ -12,6 +12,14 @@ var auth = require('../lib/auth')
 
 module.exports = function (router) {
 
+  router.all('/*', function(req, res, next) {
+    if (req.headers.host.match(/^www/) !== null ) {
+      res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url);
+    } else {
+      next();
+    }
+  });
+
 
   router.get('/rental/:category', function (req, res, next) {
 

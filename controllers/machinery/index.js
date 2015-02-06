@@ -19,8 +19,6 @@ module.exports = function (router) {
         Machinery
           .find({title: regex}, {title: 1, category: 1, url: 1, params: 1, price: 1, images: 1, sort: 1})
           .populate('category', 'title')
-          .sort({'updated_at': -1})
-          .sort({'created_at': -1})
           .sort({'sort': 1})
           .limit(10)
           .exec(function (err, machinery) {
@@ -42,8 +40,6 @@ module.exports = function (router) {
               Machinery
                 .find({category: cat._id}, {title: 1, category: 1, url: 1, params: 1, price: 1, images: 1, sort: 1})
                 .populate('category', 'title')
-                .sort({'updated_at': -1})
-                .sort({'created_at': -1})
                 .sort({'sort': 1})
                 .limit(10)
                 .exec(function (err, machinery) {
