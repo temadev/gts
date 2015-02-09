@@ -15,8 +15,11 @@ block content
                         .col-md-5
                             if (user && user.role == 'admin')
                                 a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
-                            if (machinery.images && machinery.images.length > 0 && machinery.images[0] !== '')
-                                .thumb: img(src='img/machinery/#{machinery.images[0]}')
+                            if (machinery.images && machinery.images.length > 0)
+                                if (machinery.images[0] !== '')
+                                    .thumb: img(src='img/machinery/#{machinery.images[0]}')
+                                if (machinery.images[1] && machinery.images[1] !== '')
+                                    .thumb: a(href='img/machinery/#{machinery.images[1]}', data-lightbox='lightbox'): img(src='img/machinery/#{machinery.images[1]}')
                         .col-md-7
                             small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
                             .h1= machinery.title

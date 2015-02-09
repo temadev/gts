@@ -11,7 +11,7 @@ block content
         .container
             .col-md-12.text-center
                 .hidden-xs
-                    h1.pageTitle Спецтехника в аренду
+                    h1.pageTitle Аренда спецтехники
                     p.mrg2.lead Наша компания располагает богатым автопарком спецтехники: экскаваторы, автокраны, фронтальные погрузчики, бортовые автомобили, длинномеры, бульдозеры, тралы, автовышки и др.
 
                 ul#filter.clearfix
@@ -27,8 +27,6 @@ block content
                                 a(href='category/#{category.url}')
                                     img(src='img/icons/#{category.image}')
                                     span #{category.title}
-                                if (user && user.role == 'admin')
-                                    a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') edit
     // END #main
     // START .widget-2
     section.widget-2

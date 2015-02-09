@@ -50,6 +50,7 @@ block content
                                 if machinery.images.length > 0
                                     each image in machinery.images
                                         input.form-control(type='text', name='images[]', value='#{image}')
+                                    input.form-control(type='text', name='images[]')
                                 else
                                     input.form-control(type='text', name='images[]')
                     fieldset
