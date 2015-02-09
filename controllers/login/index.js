@@ -6,6 +6,15 @@ var passport = require('passport');
 
 module.exports = function (router) {
 
+  router.all('/*', function(req, res, next) {
+    if (req.headers.host.match(/^www/) !== null ) {
+      var host = 'http://' + req.headers.host.replace(/^www\./, '') + req.url;
+      res.redirect(host);
+    } else {
+      next();
+    }
+  });
+
   /**
    * Display the login page. We also want to display any error messages that result from a failed login attempt.
    */

@@ -8,8 +8,14 @@ var Page = require('../../models/page')
 
 module.exports = function (router) {
 
-  var model = new Page();
-
+  router.all('/*', function(req, res, next) {
+    if (req.headers.host.match(/^www/) !== null ) {
+      var host = 'http://' + req.headers.host.replace(/^www\./, '') + req.url;
+      res.redirect(host);
+    } else {
+      next();
+    }
+  });
 
   router.get('/:url', function (req, res, next) {
 
@@ -65,6 +71,8 @@ module.exports = function (router) {
 
   });
 
+
+  var model = new Page();
 
   router.get('/create', auth.isAuthenticated(), function (req, res) {
 
