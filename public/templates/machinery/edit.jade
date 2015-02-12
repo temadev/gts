@@ -44,15 +44,30 @@ block content
                                 input.form-control(type='text', name='region[0][name]', value='Ярославль', disabled)
                             .col-sm-2
                                 input.form-control(type='text', name='region[0][smena]', value='#{machinery.region[0]&&machinery.region[0].smena?machinery.region[0].smena:"4 часа"}')
-                        .form-group
-                            label.col-sm-2.control-label Картинки
-                            .col-sm-4
-                                if machinery.images.length > 0
-                                    each image in machinery.images
-                                        input.form-control(type='text', name='images[]', value='#{image}')
-                                    input.form-control(type='text', name='images[]')
-                                else
-                                    input.form-control(type='text', name='images[]')
+
+                        hr
+                        if machinery.img && machinery.img.length > 0
+                            each image, index in machinery.img
+                                .form-group
+                                    label.col-sm-2.control-label Картинки
+                                    .col-sm-4
+                                        input.form-control(type='text', name='img[#{index}][url]', value='#{image.url}', placeholder='url')
+                                    .col-sm-4
+                                        input.form-control(type='text', name='img[#{index}][alt]', value='#{image.alt}', placeholder='alt')
+                            .form-group
+                                label.col-sm-2.control-label Картинки
+                                .col-sm-4
+                                    input.form-control(type='text', name='img[][url]', placeholder='url')
+                                .col-sm-4
+                                    input.form-control(type='text', name='img[][alt]', placeholder='alt')
+                        else
+                            .form-group
+                                label.col-sm-2.control-label Картинки
+                                .col-sm-4
+                                    input.form-control(type='text', name='img[][url]', placeholder='url')
+                                .col-sm-4
+                                    input.form-control(type='text', name='img[][alt]', placeholder='alt')
+                    hr
                     fieldset
                         each param, index in machinery.params
                             .form-group.clonedInput(id='param#{index+1}')

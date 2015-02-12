@@ -1372,9 +1372,7 @@ h6 {
 /* START .myBoard */
 .myBoard {
   margin-bottom: 60px;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 42px;
+  padding: 42px 15px 15px 15px;
   background: #fff;
 }
 .modal .myBoard {

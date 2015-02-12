@@ -9,8 +9,8 @@ var Machinery = require('../../models/machinery')
 
 module.exports = function (router) {
 
-  router.all('/*', function(req, res, next) {
-    if (req.headers.host.match(/^www/) !== null ) {
+  router.all('/*', function (req, res, next) {
+    if (req.headers.host.match(/^www/) !== null) {
       var host = 'http://' + req.headers.host.replace(/^www\./, '') + '/machinery' + req.url;
       res.redirect(host);
     } else {
@@ -26,7 +26,7 @@ module.exports = function (router) {
     async.parallel({
       machinery: function (callback) {
         Machinery
-          .find({title: regex}, {title: 1, category: 1, url: 1, params: 1, price: 1, images: 1, sort: 1})
+          .find({title: regex}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
           .populate('category', 'title')
           .sort({'sort': 1})
           .limit(10)
@@ -47,7 +47,7 @@ module.exports = function (router) {
             async.each(category, function (cat, callback) {
 //              console.log(cat);
               Machinery
-                .find({category: cat._id}, {title: 1, category: 1, url: 1, params: 1, price: 1, images: 1, sort: 1})
+                .find({category: cat._id}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
                 .populate('category', 'title')
                 .sort({'sort': 1})
                 .limit(10)
@@ -85,7 +85,7 @@ module.exports = function (router) {
             } else {
               value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + price;
             }
-            var img = (model.images && model.images.length > 0 && model.images[0] !== '') ? '<img src="img/machinery/' + model.images[0] + '">' : '<img src="img/blank.png">';
+            var img = (model.img && model.img.length > 0 && model.img[0].url !== '') ? '<img src="' + model.img[0].url + '">' : '<img src="img/blank.png">';
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,
@@ -108,7 +108,7 @@ module.exports = function (router) {
             } else {
               value = '<strong>' + model.category.title + ' ' + model.title + '</strong>' + price;
             }
-            var img = (model.images && model.images.length > 0 && model.images[0] !== '') ? '<img src="img/machinery/' + model.images[0] + '">' : '<img src="img/blank.png">';
+            var img = (model.img && model.img.length > 0 && model.img[0].url !== '') ? '<img src="' + model.img[0].url + '">' : '<img src="img/blank.png">';
             var curModel = {
               data: model._id,
               url: '/machinery/' + model.url,

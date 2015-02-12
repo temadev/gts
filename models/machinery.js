@@ -6,11 +6,17 @@ var mongoose = require('mongoose')
 var machineryModel = function () {
 
   var machinerySchema = Schema({
-    title: { type: String, required: true },
-    url: { type: String, unique: true },
-    category: { type: Schema.Types.ObjectId, ref: 'Category' },
+    title: {type: String, required: true},
+    url: {type: String, unique: true},
+    category: {type: Schema.Types.ObjectId, ref: 'Category'},
     content: String,
     images: [String],
+    img: [
+      {
+        url: String,
+        alt: String
+      }
+    ],
     price: Number,
     params: [
       {
@@ -21,7 +27,7 @@ var machineryModel = function () {
     region: [
       {
         name: String,
-        smena: { type: String, default: '4 часа' }
+        smena: {type: String, default: '4 часа'}
       }
     ],
     seo: {

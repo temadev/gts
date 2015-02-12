@@ -7,6 +7,7 @@
     $('#autocomplete-dynamic').autocomplete({
       serviceUrl: '/machinery/list',
       onSelect: function (suggestion) {
+        $('#autocomplete-dynamic').val('');
         window.location.href = suggestion.url;
       },
       transformResult: function(response) {
