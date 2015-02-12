@@ -11,7 +11,7 @@ module.exports = function (router) {
   router.all('/*', function(req, res, next) {
     if (req.headers.host.match(/^www/) !== null ) {
       var host = 'http://' + req.headers.host.replace(/^www\./, '') + '/page' + req.url;
-      res.redirect(host);
+      res.redirect(301, host);
     } else {
       next();
     }
