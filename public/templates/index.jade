@@ -23,9 +23,9 @@ block content
                 .customRow
                     ul#portfolio.clearfix
                         each category in categories
-                            li.all(class='#{category.category.url}')
-                                a(href='category/#{category.url}')
-                                    img(src='img/icons/#{category.image}')
+                            li(class='all #{category.category.url}')
+                                a(href='#{hostname}/category/#{category.url}')
+                                    img(src='#{hostname}/img/icons/#{category.image}')
                                     span #{category.title}
     // END #main
     // START .widget-2
@@ -34,14 +34,14 @@ block content
             h2.title Сыпучие материалы
             .customRow
                 ul#material.clearfix
-                    li: a(href='page/pesok-shheben-beton')
-                        img.img-circle(src='img/material/pesok.jpg')
+                    li: a(href='#{hostname}/page/pesok-shheben-beton')
+                        img.img-circle(src='#{hostname}/img/material/pesok.jpg')
                         span Песок
-                    li: a(href='page/pesok-shheben-beton')
-                        img.img-circle(src='img/material/shheben.jpg')
+                    li: a(href='#{hostname}/page/pesok-shheben-beton')
+                        img.img-circle(src='#{hostname}/img/material/shheben.jpg')
                         span Щебень
-                    li: a(href='page/pesok-shheben-beton')
-                        img.img-circle(src='img/material/beton.jpg')
+                    li: a(href='#{hostname}/page/pesok-shheben-beton')
+                        img.img-circle(src='#{hostname}/img/material/beton.jpg')
                         span Бетон
     // END .widget-1
     // START .widget-1
@@ -66,7 +66,7 @@ block content
                 .carousel-inner
                     .item.active: .row
                         .col-sm-4
-                            img(src='img/slider-1.jpg', alt='Аренда строительной техники в Ярославле')
+                            img(src='#{hostname}/img/slider-1.jpg', alt='Аренда строительной техники в Ярославле')
                         .col-sm-8
                             h3.subTitle Аренда строительной техники в Ярославле
                             p На сегодняшний день многие отрасли деятельности человека связаны с применением той или иной строительной спецтехники. Однако, стоит отметить, что содержать собственный автопарк для многих, даже крупных компаний, экономически не рентабельно. К тому же, часто отдельные типы машин (гидромолоты, автоплатформы, автовышки, буровые установки) используются только для разовых работ. Поэтому в данном случае лучшим выходом из ситуации становится аренда строительной техники.

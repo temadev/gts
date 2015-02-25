@@ -15,8 +15,8 @@ block content
                         .clearfix.mrg2
                             .col-md-2
                                 if (user && user.role == 'admin')
-                                    a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') редактировать
-                                .thumb: img(src='img/icons/#{category.image}')
+                                    a.btn.btn-default.btn-xs(href='#{hostname}/category/edit/#{category._id}') редактировать
+                                .thumb: img(src='#{hostname}/img/icons/#{category.image}')
                             .col-md-10
                                 small.category: a(href='/')= category.category.title
                                 .h1.subTitle= category.title
@@ -36,7 +36,7 @@ block content
                                         tbody
                                             each machine in machinery
                                                 tr
-                                                    td: a(href='machinery/#{machine.url}', data-toggle='modal', data-target='#modalMachinery')= machine.title
+                                                    td: a(href='#{hostname}/machinery/#{machine.url}', data-toggle='modal', data-target='#modalMachinery')= machine.title
                                                     td #{machine.params[0].value}
                                                     if (machine.params[1])
                                                         td #{machine.params[1].value}

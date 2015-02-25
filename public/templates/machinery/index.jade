@@ -14,14 +14,14 @@ block content
                     .clearfix.mrg2
                         .col-md-5
                             if (user && user.role == 'admin')
-                                a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
+                                a.btn.btn-default.btn-xs(href='#{hostname}/machinery/edit/#{machinery._id}') редактировать
                             if (machinery.img && machinery.img.length > 0)
                                 if (machinery.img[0] && machinery.img[0].url !== '')
                                     .thumb: img(src='#{machinery.img[0].url}', alt='#{machinery.img[0].alt}')
                                 if (machinery.img[1] && machinery.img[1].url && machinery.img[1].url !== '')
                                     .thumb: a(href='#{machinery.img[1].url}', data-lightbox='lightbox'): img(src='#{machinery.img[1].url}', alt='#{machinery.img[1].alt}')
                         .col-md-7
-                            small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
+                            small.category: a(href='#{hostname}/category/#{machinery.category.url}')= machinery.category.title
                             .h1= machinery.title
                             .row.order
                                 .col-xs-5
@@ -36,7 +36,7 @@ block content
                                         else
                                             | звоните
                                 .col-xs-7.text-right
-                                    a.btn.btn-success.btn-lg.btn-order(href='/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
+                                    a.btn.btn-success.btn-lg.btn-order(href='#{hostname}/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
                                         i.fa.fa-print.pull-left
                                         | Оставить заявку
                                         if machinery.region[0] && machinery.region[0].smena

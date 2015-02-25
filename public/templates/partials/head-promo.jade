@@ -10,11 +10,11 @@
 
                 .active.item
                     picture
-                        source(srcset='img/slide6_small.jpg', media='(max-width: 768px)')
-                        source(srcset='img/slide6.jpg')
-                        img(src='img/slide6.jpg', alt='Погрузчик JCB 3CX')
+                        source(srcset='#{hostname}/img/slide6_small.jpg', media='(max-width: 768px)')
+                        source(srcset='#{hostname}/img/slide6.jpg')
+                        img(src='#{hostname}/img/slide6.jpg', alt='Погрузчик JCB 3CX')
                     .carousel-caption.hidden-xs
-                        a(href='machinery/jcb-3cx', data-toggle='modal', data-target='#modalMachinery')
+                        a(href='#{hostname}/machinery/jcb-3cx', data-toggle='modal', data-target='#modalMachinery')
                             .description.hidden-sm: span Специальная цена
                             h3 Погрузчик JCB 3CX
                             div
@@ -22,11 +22,11 @@
                                 .order Оставить заявку
                 .item
                     picture
-                        source(srcset='img/slide7_small.jpg', media='(max-width: 768px)')
-                        source(srcset='img/slide7.jpg')
-                        img(src='img/slide7.jpg', alt='Автокран Клинцы 25 тонн')
+                        source(srcset='#{hostname}/img/slide7_small.jpg', media='(max-width: 768px)')
+                        source(srcset='#{hostname}/img/slide7.jpg')
+                        img(src='#{hostname}/img/slide7.jpg', alt='Автокран Клинцы 25 тонн')
                     .carousel-caption.hidden-xs
-                        a(href='machinery/ks-55713-1k-4-klinci', data-toggle='modal', data-target='#modalMachinery')
+                        a(href='#{hostname}/machinery/ks-55713-1k-4-klinci', data-toggle='modal', data-target='#modalMachinery')
                             .description.hidden-sm: span Специальная цена
                             h3 Автокран "Клинцы" 25 тонн
                             div
@@ -34,11 +34,11 @@
                                 .order Оставить заявку
                 .item
                     picture
-                        source(srcset='img/slide3_small.jpg', media='(max-width: 768px)')
-                        source(srcset='img/slide3.jpg')
-                        img(src='img/slide3.jpg', alt='Volvo BL 71B')
+                        source(srcset='#{hostname}/img/slide3_small.jpg', media='(max-width: 768px)')
+                        source(srcset='#{hostname}/img/slide3.jpg')
+                        img(src='#{hostname}/img/slide3.jpg', alt='Volvo BL 71B')
                     .carousel-caption.hidden-xs
-                        a(href='machinery/volvo-bl-71b', data-toggle='modal', data-target='#modalMachinery')
+                        a(href='#{hostname}/machinery/volvo-bl-71b', data-toggle='modal', data-target='#modalMachinery')
                             .description.hidden-sm: span Специальная цена
                             h3 Погрузчик Volvo BL 71B
                             div
@@ -46,18 +46,18 @@
                                 .order Оставить заявку
                 .item
                     picture
-                        source(srcset='img/slide2_small.jpg', media='(max-width: 768px)')
-                        source(srcset='img/slide2.jpg')
-                        img(src='img/slide2.jpg', alt='Строительство спорткомплекса')
+                        source(srcset='#{hostname}/img/slide2_small.jpg', media='(max-width: 768px)')
+                        source(srcset='#{hostname}/img/slide2.jpg')
+                        img(src='#{hostname}/img/slide2.jpg', alt='Строительство спорткомплекса')
                     .carousel-caption.hidden-xs
                         .description.hidden-sm: span Аренда строительной техники
                         h3 ГТС ГлобалТехноСтрой
             else
                 .active.item
                     picture
-                        source(srcset='img/sub1_small.jpg', media='(max-width: 768px)')
-                        source(srcset='img/sub1.jpg')
-                        img(src='img/sub1.jpg', alt='ГТС ГлобалТехноСтрой')
+                        source(srcset='#{hostname}/img/sub1_small.jpg', media='(max-width: 768px)')
+                        source(srcset='#{hostname}/img/sub1.jpg')
+                        img(src='#{hostname}/img/sub1.jpg', alt='ГТС ГлобалТехноСтрой')
 .myForm.clearfix
     input#autocomplete-dynamic(type='text', placeholder='Поиск по базе из #{machineryCount} ед. спецтехники', name='country')
     //input(type='submit', value='Ярославль', disabled)

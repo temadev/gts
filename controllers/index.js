@@ -171,7 +171,7 @@ module.exports = function (router) {
       }
     }, function (err) {
       var sitemap = sm.createSitemap({
-        hostname: 'http://gts76.ru',
+        hostname: process.env.HOSTNAME,
         cacheTime: 600000,
         urls: urls
       });

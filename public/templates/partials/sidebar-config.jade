@@ -13,4 +13,4 @@ mixin build-sidebar-items(items)
                 else
                     a.list-group-item(href="#{val.href}", class="#{(val.active === 1)?'active':''}")
                         | #{key}
-                        img(src='img/icons/#{val.image}')
+                        img(src='#{hostname}/img/icons/#{val.image}')

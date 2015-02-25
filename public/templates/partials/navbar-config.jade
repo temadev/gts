@@ -5,9 +5,6 @@ mixin build-menu-items(items)
             li(class=(has_submenu?"dropdown":""))
                 a(href=val.href, title=key, data-toggle=(has_submenu?"dropdown":""), class=(has_submenu?"dropdown-toggle":""))
                     = key
-                    //if (has_submenu)
-                    //    span.caret
                 if (has_submenu)
                     ul(class="dropdown-menu")
                         +build-menu-items(val.S)
-                    // END SubMenu item
