@@ -149,19 +149,12 @@ module.exports = function (router) {
             model: 'Category'
           };
           Machinery.populate(machinery, options, function (err, machinery) {
-            res.format({
-              json: function () {
-                res.json({machinery: machinery});
-              },
-              html: function () {
-                if (req.xhr) {
-                  res.render('machinery/index_ajax', {machinery: machinery});
-                }
-                else {
-                  res.render('machinery/index', {machinery: machinery});
-                }
-              }
-            });
+            if (req.xhr) {
+              res.render('machinery/index_ajax', {machinery: machinery});
+            }
+            else {
+              res.render('machinery/index', {machinery: machinery});
+            }
           });
         }
       });
@@ -179,14 +172,7 @@ module.exports = function (router) {
 
         Category.find({category: {$exists: true}})
           .exec(function (err, categories) {
-            res.format({
-              json: function () {
-                res.json({machinery: machinery, categories: categories});
-              },
-              html: function () {
-                res.render('machinery/edit', {machinery: machinery, categories: categories});
-              }
-            });
+            res.render('machinery/edit', {machinery: machinery, categories: categories});
           });
       });
 
@@ -208,14 +194,7 @@ module.exports = function (router) {
 
     Category.find({category: {$exists: true}})
       .exec(function (err, categories) {
-        res.format({
-          json: function () {
-            res.json({categories: categories});
-          },
-          html: function () {
-            res.render('machinery/create', {categories: categories});
-          }
-        });
+        res.render('machinery/create', {categories: categories});
       });
 
   });

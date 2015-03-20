@@ -27,14 +27,7 @@ module.exports = function (router) {
           next();
         }
         if (page) {
-          res.format({
-            json: function () {
-              res.json({ page: page });
-            },
-            html: function () {
-              res.render('page/index', { page: page });
-            }
-          });
+          res.render('page/index', { page: page });
         }
       });
 
@@ -47,15 +40,8 @@ module.exports = function (router) {
 
     Page.findOne({ _id: id })
       .exec(function (err, page) {
-        console.log(page);
-        res.format({
-          json: function () {
-            res.json({ page: page });
-          },
-          html: function () {
-            res.render('page/edit', { page: page });
-          }
-        });
+        //console.log(page);
+        res.render('page/edit', { page: page });
       });
 
   });
@@ -76,14 +62,7 @@ module.exports = function (router) {
 
   router.get('/create', auth.isAuthenticated(), function (req, res) {
 
-    res.format({
-      json: function () {
-        res.json(model);
-      },
-      html: function () {
-        res.render('page/create', model);
-      }
-    });
+    res.render('page/create', model);
 
   });
 
