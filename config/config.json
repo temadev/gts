@@ -91,6 +91,15 @@
       }
     },
 
+    "hostname": {
+      "enabled": true,
+      "priority": 115,
+      "module": {
+        "name":"path:./lib/hostname",
+        "method": "hostname"
+      }
+    },
+
     "nav": {
       "enabled": true,
       "priority": 114,
