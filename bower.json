@@ -23,7 +23,6 @@
     "fastclick": "~1.0.2",
     "devbridge-autocomplete": "~1.2.9",
     "gmaps": "~0.4.14",
-    "form.validation": "~0.5.3",
     "bs-datetimepicker": "~4.0.0",
     "moment": "~2.9.0",
     "lightbox": "~2.7.1"
