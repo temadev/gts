@@ -32,14 +32,7 @@ module.exports = function (router) {
           Machinery.find({category: category})
             .sort({'sort': 1})
             .exec(function (err, machinery) {
-              res.format({
-                json: function () {
-                  res.json({ category: category, machinery: machinery });
-                },
-                html: function () {
-                  res.render('category/index', { category: category, machinery: machinery });
-                }
-              });
+              res.render('category/index', { category: category, machinery: machinery });
             });
         }
       });
@@ -53,19 +46,10 @@ module.exports = function (router) {
 
     Category.findOne({ _id: id })
       .exec(function (err, category) {
-//        console.log(category);
 
         Category.find({category: {$exists: false}})
           .exec(function (err, categories) {
-//            console.log(categories);
-            res.format({
-              json: function () {
-                res.json({ category: category });
-              },
-              html: function () {
-                res.render('category/edit', { category: category, categories: categories });
-              }
-            });
+            res.render('category/edit', { category: category, categories: categories });
           });
       });
   });
@@ -86,14 +70,7 @@ module.exports = function (router) {
 
     Category.find({category: {$exists: false}})
       .exec(function (err, categories) {
-        res.format({
-          json: function () {
-            res.json({categories: categories});
-          },
-          html: function () {
-            res.render('category/create', {categories: categories});
-          }
-        });
+        res.render('category/create', {categories: categories});
       });
 
   });
