@@ -50,11 +50,6 @@
       });
     }
 
-    $('.myForm .btn-group a').on('click', function (e) {
-      e.preventDefault();
-      $('.myForm .btn-group button:first-child').text($(this).text());
-    });
-
   });
 
 }(jQuery, window, document));

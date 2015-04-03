@@ -72,7 +72,15 @@ module.exports = function (router) {
             keywords: 'аренда спецтехники, аренда строительной техники, услуги спецтехники',
             description: 'Если вам требуется аренда спецтехники или аренда строительной техники, обращайтесь в компанию «ГлобалТехноСтрой». Мы предлагаем услуги спецтехники на выгодных условиях. Высокий уровень сервиса и профессионализм наших специалистов способствуют развитию вашего бизнеса.'
           },
-          categories: items
+          categories: items,
+          links: [
+            {href: 'http://gts76.ru', title: 'Ярославль'},
+            {href: 'http://ivanovo.gts76.ru', title: 'Иваново'},
+            {href: 'http://kostroma.gts76.ru', title: 'Кострома'},
+            {href: 'http://vladimir.gts76.ru', title: 'Владимир'},
+            {href: 'http://vologda.gts76.ru', title: 'Вологда'}
+          ],
+          hostname: process.env.HOSTNAME
         };
 
         res.render('index', model);

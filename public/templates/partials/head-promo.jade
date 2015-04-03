@@ -60,14 +60,14 @@
                         img(src='img/sub1.jpg', alt='ГТС ГлобалТехноСтрой')
 .myForm.clearfix
     input#autocomplete-dynamic(type='text', placeholder='Поиск по базе из #{machineryCount} ед. спецтехники', name='country')
-    //input(type='submit', value='Ярославль', disabled)
     .btn-group.btn-group-lg.dropup
-        button.btn.btn-primary Ярославль
+        each link in links
+            if link.href == hostname
+                button.btn.btn-primary #{link.title}
         button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown'): span.caret
         ul.dropdown-menu(role='menu')
-            li: a(href='#') Ярославль
-            li: a(href='#') Рыбинск
-            li: a(href='#') Ростов
+            each link in links
+                li: a(href='#{link.href}') #{link.title}
 if (nav.menu['Главная']['active'])
     .slideHolder
         a.scrollTo(href='#content'): i.fa.fa-angle-down
