@@ -137,6 +137,12 @@ module.exports = function (router) {
   });
 
 
+  router.get('/robots.txt', function (req, res) {
+    res.header('Content-Type', 'text/plain');
+    res.send('User-agent: *\nHost: ' + process.env.HOSTNAME.split('http://')[1]);
+  });
+
+
   router.get('/sitemap.xml', function (req, res) {
 
     var urls = [
