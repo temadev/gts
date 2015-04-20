@@ -62,29 +62,42 @@ module.exports = function (router) {
 
   router.get('/', function (req, res) {
 
-    Category.find({category: {'$ne': null}})
-      .populate('category', 'url')
-      .sort({title: 1})
-      .exec(function (err, items) {
-        var model = {
-          seo: {
-            title: 'Аренда спецтехники и аренда строительной техники. Услуги спецтехники от компании ГТС ГлобалТехноСтрой',
-            keywords: 'аренда спецтехники, аренда строительной техники, услуги спецтехники',
-            description: 'Если вам требуется аренда спецтехники или аренда строительной техники, обращайтесь в компанию «ГлобалТехноСтрой». Мы предлагаем услуги спецтехники на выгодных условиях. Высокий уровень сервиса и профессионализм наших специалистов способствуют развитию вашего бизнеса.'
-          },
-          categories: items,
-          links: [
-            {href: 'http://gts76.ru', title: 'Ярославль'},
-            {href: 'http://ivanovo.gts76.ru', title: 'Иваново'},
-            {href: 'http://kostroma.gts76.ru', title: 'Кострома'},
-            {href: 'http://vladimir.gts76.ru', title: 'Владимир'},
-            {href: 'http://vologda.gts76.ru', title: 'Вологда'}
-          ],
-          hostname: process.env.HOSTNAME
-        };
+    var model = {
+      seo: {},
+      links: [
+        {href: 'http://gts76.ru', title: 'Ярославль'},
+        {href: 'http://ivanovo.gts76.ru', title: 'Иваново'},
+        {href: 'http://kostroma.gts76.ru', title: 'Кострома'},
+        {href: 'http://vladimir.gts76.ru', title: 'Владимир'},
+        {href: 'http://vologda.gts76.ru', title: 'Вологда'}
+      ],
+      hostname: process.env.HOSTNAME
+    };
 
-        res.render('index', model);
-      });
+
+    async.each(res.locals.settings, function (setting, cb) {
+      console.log(setting);
+      if (setting.type === 'seo') {
+        if (setting.title === 'index.title') {
+          model.seo.title = setting.value;
+        }
+        if (setting.title === 'index.keywords') {
+          model.seo.keywords = setting.value;
+        }
+        if (setting.title === 'index.description') {
+          model.seo.description = setting.value;
+        }
+      }
+      cb();
+    }, function () {
+      Category.find({category: {'$ne': null}})
+        .populate('category', 'url')
+        .sort({title: 1})
+        .exec(function (err, items) {
+          model.categories = items;
+          res.render('index', model);
+        });
+    });
 
   });
 
