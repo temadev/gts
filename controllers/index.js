@@ -76,7 +76,6 @@ module.exports = function (router) {
 
 
     async.each(res.locals.settings, function (setting, cb) {
-      console.log(setting);
       if (setting.type === 'seo') {
         if (setting.title === 'index.title') {
           model.seo.title = setting.value;
