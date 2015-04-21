@@ -6,11 +6,6 @@
     "views": "path:./.build/templates"
   },
 
-  "databaseConfig": {
-    "host": "mongodb://heroku_app29506363:inu9hg8m6asa1341fl8u47claa@ds063789.mongolab.com:63789",
-    "database": "heroku_app29506363"
-  },
-
   "bcrypt": {
     "difficulty": 8
   },

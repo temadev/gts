@@ -13,11 +13,6 @@
     }
   },
 
-  "databaseConfig": {
-    "host": "localhost",
-    "database": "gts-site"
-  },
-
   "bcrypt": {
     "difficulty": 8
   },
