@@ -71,7 +71,8 @@ module.exports = function (router) {
         {href: 'http://vladimir.gts76.ru', title: 'Владимир'},
         {href: 'http://vologda.gts76.ru', title: 'Вологда'}
       ],
-      hostname: process.env.HOSTNAME
+      hostname: process.env.HOSTNAME,
+      slider: []
     };
 
 
@@ -86,6 +87,9 @@ module.exports = function (router) {
         if (setting.title === 'index.description') {
           model.seo.description = setting.value;
         }
+      }
+      if (setting.type === 'slider' && setting.title === 'index.bottom' && setting.value.length) {
+        model.slider.push(setting.value);
       }
       cb();
     }, function () {
