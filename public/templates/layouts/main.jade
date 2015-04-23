@@ -14,22 +14,25 @@ html(lang='en')
           .col-xs-8.col-md-6
             include ../partials/top-navbar
           .col-md-3.hidden-sm.hidden-xs
-            .sitePhone.text-right 8-800-500-30-70
-              div <span>(4852)</span> 57-01-01, 90-01-01
+            .sitePhone.text-right #{phones.main}
+              if phones.second
+                div !{phones.second}
       section#headPromo.hidden-xs
         include ../partials/head-promo
       section.allotted.top.visible-xs(role='complementary')
         h4.subTitle.text-center Аренда спецтехники
-        .sitePhone.text-center 8-800-500-30-70
-          div <span>(4852)</span> 57-01-01, 90-01-01
+        .sitePhone.text-center #{phones.main}
+          if phones.second
+            div !{phones.second}
       section#content.clearfix
         block content
       section.allotted(role='complementary')
         h4.subTitle.text-center Заказы по телефонам
-        .sitePhone.text-center 8-800-500-30-70
-          div <span>(4852)</span> 57-01-01, 90-01-01
+        .sitePhone.text-center #{phones.main}
+          if phones.second
+            div !{phones.second}
       footer#footer(role='contentinfo')
-        .container: .copyright &copy; 2010-2014 ГТС ГлобалТехноСтрой. <a href="/" class="hidden-xs">Аренда спецтехники в Ярославле</a>
+        .container: .copyright &copy; 2010-2015 ГТС ГлобалТехноСтрой. <a href="/" class="hidden-xs">Аренда спецтехники в Ярославле</a>
     block body_child
     include ../partials/scripts
     block page_scripts
