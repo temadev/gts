@@ -20,6 +20,15 @@ block content
                             label.col-sm-2.control-label Контент
                             .col-sm-9
                                 textarea.form-control#pageContent(name='content', rows='6') #{page.content?page.content:""}
+                        .form-group
+                            .col-sm-offset-2.col-sm-9
+                                .checkbox
+                                    label
+                                        if category.hide
+                                            input(type='checkbox', name='hide', checked)
+                                        else
+                                            input(type='checkbox', name='hide')
+                                        | &nbsp;Не показывать страницу
                     hr
                     fieldset
                         .form-group

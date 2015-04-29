@@ -26,7 +26,7 @@ module.exports = function (router) {
     async.parallel({
       machinery: function (callback) {
         Machinery
-          .find({title: regex}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
+          .find({title: regex, hide: {'$ne': true}}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
           .populate('category', 'title')
           .sort({'sort': 1})
           .limit(10)
@@ -36,7 +36,7 @@ module.exports = function (router) {
       },
       category: function (callback) {
         Category
-          .find({title: regex}, {_id: 1})
+          .find({title: regex, hide: {'$ne': true}}, {_id: 1})
           .sort({'updated_at': -1})
           .sort({'created_at': -1})
           .limit(10)
@@ -47,7 +47,7 @@ module.exports = function (router) {
             async.each(category, function (cat, callback) {
 //              console.log(cat);
               Machinery
-                .find({category: cat._id}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
+                .find({category: cat._id, hide: {'$ne': true}}, {title: 1, category: 1, url: 1, params: 1, price: 1, img: 1, sort: 1})
                 .populate('category', 'title')
                 .sort({'sort': 1})
                 .limit(10)
@@ -137,7 +137,7 @@ module.exports = function (router) {
 
     var url = req.params.url;
 
-    Machinery.findOne({url: url})
+    Machinery.findOne({url: url, hide: {'$ne': true}})
       .populate('category', 'title url category')
       .exec(function (err, machinery) {
         if (!machinery) {
@@ -153,7 +153,7 @@ module.exports = function (router) {
               res.render('machinery/index_ajax', {machinery: machinery});
             }
             else {
-              res.render('machinery/index', {machinery: machinery});
+              res.render('machinery/index', {machinery: machinery, url: '/machinery/' + url});
             }
           });
         }
@@ -182,6 +182,8 @@ module.exports = function (router) {
   router.post('/edit', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
+
+    body.hide = body.hide?true:false;
 
     Machinery.findByIdAndUpdate(body.id, {$set: body}, function (err, machinery) {
       res.redirect('/machinery/' + machinery.url);

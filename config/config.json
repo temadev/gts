@@ -95,7 +95,7 @@
       }
     },
 
-    "hostname": {
+    "siteSettings": {
       "enabled": true,
       "priority": 116,
       "module": {

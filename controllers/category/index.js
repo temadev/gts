@@ -22,17 +22,17 @@ module.exports = function (router) {
 
     var url = req.params.url;
 
-    Category.findOne({ url: url })
+    Category.findOne({ url: url, hide: {'$ne': true} })
       .populate('category', 'title url')
       .exec(function (err, category) {
         if (!category) {
           next();
         }
         if (category) {
-          Machinery.find({category: category})
+          Machinery.find({category: category, hide: {'$ne': true}})
             .sort({'sort': 1})
             .exec(function (err, machinery) {
-              res.render('category/index', { category: category, machinery: machinery });
+              res.render('category/index', { category: category, machinery: machinery, url: '/category/' + url });
             });
         }
       });
@@ -58,6 +58,8 @@ module.exports = function (router) {
   router.post('/edit', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
+
+    body.hide = body.hide?true:false;
 
     Category.findByIdAndUpdate(body.id, { $set: body }, function (err, category) {
       res.redirect('/category/' + category.url);

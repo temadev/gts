@@ -18,6 +18,7 @@ var categoryModel = function () {
       content: String,
       canonical: String
     },
+    hide: Boolean,
     created_at: Date,
     updated_at: Date
   });

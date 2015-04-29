@@ -38,6 +38,7 @@ var machineryModel = function () {
       canonical: String
     },
     sort: Number,
+    hide: Boolean,
     created_at: Date,
     updated_at: Date,
     status: Boolean

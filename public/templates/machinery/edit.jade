@@ -39,6 +39,15 @@ block content
                             .col-sm-4
                                 input.form-control(type='number', name='price', value='#{machinery.price?machinery.price:""}')
                         .form-group
+                            .col-sm-offset-2.col-sm-9
+                                .checkbox
+                                    label
+                                        if machinery.hide
+                                            input(type='checkbox', name='hide', checked)
+                                        else
+                                            input(type='checkbox', name='hide')
+                                        | &nbsp;Не показывать в каталоге
+                        .form-group
                             label.col-sm-2.control-label Регион/мин.смена
                             .col-sm-3
                                 input.form-control(type='text', name='region[0][name]', value='Ярославль', disabled)

@@ -21,13 +21,13 @@ module.exports = function (router) {
 
     var url = req.params.url;
 
-    Page.findOne({ url: url })
+    Page.findOne({ url: url, hide: {'$ne': true}})
       .exec(function (err, page) {
         if (!page) {
           next();
         }
         if (page) {
-          res.render('page/index', { page: page });
+          res.render('page/index', { page: page, url: '/page/' + url });
         }
       });
 
@@ -49,6 +49,8 @@ module.exports = function (router) {
   router.post('/edit', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
+
+    body.hide = body.hide?true:false;
 
     Page.findByIdAndUpdate(body.id, { $set: body }, function (err, page) {
       res.redirect('/page/' + page.url);

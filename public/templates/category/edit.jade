@@ -31,6 +31,15 @@ block content
                             .col-sm-9
                                 textarea.form-control#categoryContent(name='content', rows='6') #{category.content?category.content:""}
                         .form-group
+                            .col-sm-offset-2.col-sm-9
+                                .checkbox
+                                    label
+                                        if category.hide
+                                            input(type='checkbox', name='hide', checked)
+                                        else
+                                            input(type='checkbox', name='hide')
+                                        | &nbsp;Не показывать в каталоге
+                        .form-group
                             label.col-sm-2.control-label Картинка
                             .col-sm-4
                                 input.form-control#image(type='text', name='image', value='#{category.image?category.image:""}')

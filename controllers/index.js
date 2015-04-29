@@ -22,44 +22,6 @@ module.exports = function (router) {
   });
 
 
-  router.get('/rental/:category', function (req, res, next) {
-
-    var url = req.originalUrl;
-
-    if (url.slice(-1) !== '/') {
-      url = url + '/';
-    }
-
-    Category.findOne({'seo.canonical': url}, 'url', function (err, item) {
-      if (item) {
-        res.redirect(301, '/category/' + item.url);
-      } else {
-        next();
-      }
-    });
-
-  });
-
-
-  router.get('/rental/:category/:machinery', function (req, res, next) {
-
-    var url = req.originalUrl;
-
-    if (url.slice(-1) !== '/') {
-      url = url + '/';
-    }
-
-    Machinery.findOne({'seo.canonical': url}, 'url', function (err, item) {
-      if (item) {
-        res.redirect(301, '/machinery/' + item.url);
-      } else {
-        next();
-      }
-    });
-
-  });
-
-
   router.get('/', function (req, res) {
 
     var model = {
@@ -71,7 +33,6 @@ module.exports = function (router) {
         {href: 'http://vladimir.gts76.ru', title: 'Владимир'},
         {href: 'http://vologda.gts76.ru', title: 'Вологда'}
       ],
-      hostname: process.env.HOSTNAME,
       slider: []
     };
 
@@ -93,7 +54,7 @@ module.exports = function (router) {
       }
       cb();
     }, function () {
-      Category.find({category: {'$ne': null}})
+      Category.find({category: {'$ne': null}, hide: {'$ne': true}})
         .populate('category', 'url')
         .sort({title: 1})
         .exec(function (err, items) {
@@ -155,7 +116,7 @@ module.exports = function (router) {
 
   router.get('/robots.txt', function (req, res) {
     res.header('Content-Type', 'text/plain');
-    res.send('User-agent: *\nHost: ' + process.env.HOSTNAME.split('http://')[1]);
+    res.send('User-agent: *\nHost: ' + res.locals.hostname.split('http://')[1]);
   });
 
 
@@ -167,7 +128,7 @@ module.exports = function (router) {
 
     async.parallel({
       category: function (callback) {
-        Category.find({}, 'url', function (err, items) {
+        Category.find({hide: {'$ne': true}}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
             var url = {url: '/category/' + item.url};
             urls.push(url);
@@ -178,7 +139,7 @@ module.exports = function (router) {
         });
       },
       machinery: function (callback) {
-        Machinery.find({}, 'url', function (err, items) {
+        Machinery.find({hide: {'$ne': true}}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
             var url = {url: '/machinery/' + item.url};
             urls.push(url);
@@ -189,7 +150,7 @@ module.exports = function (router) {
         });
       },
       page: function (callback) {
-        Page.find({url: {$ne: 'test'}}, 'url', function (err, items) {
+        Page.find({url: {$ne: 'test'}, hide: {'$ne': true}}, 'url', function (err, items) {
           async.each(items, function (item, callback) {
             var url = {url: '/page/' + item.url};
             urls.push(url);
@@ -201,7 +162,7 @@ module.exports = function (router) {
       }
     }, function (err) {
       var sitemap = sm.createSitemap({
-        hostname: process.env.HOSTNAME,
+        hostname: res.locals.hostname,
         cacheTime: 600000,
         urls: urls
       });

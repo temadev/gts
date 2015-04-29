@@ -33,7 +33,11 @@ block content
                       a.btn.btn-default.btn-xs(href='/machinery/edit/#{machine._id}'): i.fa.fa-edit
                     td #{index + 1}
                     td #{machine.category.title}
-                    td: a(href='/machinery/#{machine.url}') #{machine.title}
+                    td
+                        a(href='/machinery/#{machine.url}') #{machine.title}
+                        if machine.hide
+                            br
+                            span.label.label-default скрыт
                     td!= (machine.images && machine.images.length > 0 && machine.images[0] != '') ? machine.images.length : '<i class="fa fa-times text-danger"></i>'
                     td!= (machine.content && machine.content.length > 0) ? machine.content.length : '<i class="fa fa-times text-danger"></i>'
                     td #{machine.price}
