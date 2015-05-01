@@ -14,22 +14,23 @@ form#orderForm
           input.form-control#orderPhone(type='text', name='orderPhone', placeholder='Телефон')
     hr
     .row
-      .col-sm-6
-        .form-group
-          label(for='orderDateBegin') Дата начала
-          input.form-control.datetimepicker#orderDateBegin(type='text', name='orderDateBegin', placeholder='Дата начала', data-format='DD.MM.YYYY')
-      .col-sm-6
-        .form-group
-          label(for='orderDateEnd') Дата конца
-          input.form-control.datetimepicker#orderDateEnd(type='text', name='orderDateEnd', placeholder='Дата конца', data-format='DD.MM.YYYY')
-      .col-sm-6
-        .form-group
-          label(for='orderTimeBegin') Время начала
-          input.form-control.datetimepicker#orderTimeBegin(type='text', name='orderTimeBegin', placeholder='Время начала', data-format='LT')
-      .col-sm-6
-        .form-group
-          label(for='orderTime') Смена, час.
-          input.form-control#orderTime(type='text', name='orderTime', placeholder='Смена, час.')
+      if !(machinery == 'any' || category == 'any')
+        .col-sm-6
+          .form-group
+            label(for='orderDateBegin') Дата начала
+            input.form-control.datetimepicker#orderDateBegin(type='text', name='orderDateBegin', placeholder='Дата начала', data-format='DD.MM.YYYY')
+        .col-sm-6
+          .form-group
+            label(for='orderDateEnd') Дата конца
+            input.form-control.datetimepicker#orderDateEnd(type='text', name='orderDateEnd', placeholder='Дата конца', data-format='DD.MM.YYYY')
+        .col-sm-6
+          .form-group
+            label(for='orderTimeBegin') Время начала
+            input.form-control.datetimepicker#orderTimeBegin(type='text', name='orderTimeBegin', placeholder='Время начала', data-format='LT')
+        .col-sm-6
+          .form-group
+            label(for='orderTime') Смена, час.
+            input.form-control#orderTime(type='text', name='orderTime', placeholder='Смена, час.')
       .col-sm-12
         .form-group
           label(for='orderComment') Комментарий
@@ -98,8 +99,8 @@ script.
     e.preventDefault();
 
     var $form = $(e.target)
-      , validator = $form.data('bootstrapValidator')
-      , submitButton = validator.getSubmitButton();
+            , validator = $form.data('bootstrapValidator')
+            , submitButton = validator.getSubmitButton();
 
     submitButton.attr('disabled', true).html('<i class="fa fa-spin fa-circle-o-notch"></i> Пожалуйста, ожидайте...');
 

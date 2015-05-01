@@ -1,64 +1,64 @@
 extends ../layouts/main
 block active-item
-    - nav.menu[machinery.category.category.title].active = 1
-    - nav.menu[machinery.category.category.title].S[machinery.category.title].active = 1
+  - nav.menu[machinery.category.category.title].active = 1
+  - nav.menu[machinery.category.category.title].S[machinery.category.title].active = 1
 block seo
-    meta(name='description', content='#{machinery.seo.description}')
-    meta(name='keywords', content='#{machinery.seo.keywords}')
-    title #{machinery.seo.title?machinery.seo.title:machinery.title} | ГТС
+  meta(name='description', content='#{machinery.seo.description}')
+  meta(name='keywords', content='#{machinery.seo.keywords}')
+  title #{machinery.seo.title ? machinery.seo.title : machinery.title} | ГТС
 block content
-    .container
-        .row
-            .col-lg-9
-                .myBoard
-                    .clearfix.mrg2
-                        .col-md-5
-                            if (user && user.role == 'admin')
-                                a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
-                            if (machinery.img && machinery.img.length > 0)
-                                if (machinery.img[0] && machinery.img[0].url !== '')
-                                    .thumb: img(src='#{machinery.img[0].url}', alt='#{machinery.img[0].alt}')
-                                if (machinery.img[1] && machinery.img[1].url && machinery.img[1].url !== '')
-                                    .thumb: a(href='#{machinery.img[1].url}', data-lightbox='lightbox'): img(src='#{machinery.img[1].url}', alt='#{machinery.img[1].alt}')
-                        .col-md-7
-                            small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
-                            .h1= machinery.title
-                            .row.order
-                                .col-xs-5
-                                    h3.price
-                                        small Стоимость аренды:
-                                        if machinery.price && machinery.price !== '0'
-                                            | #{machinery.price}&nbsp;
-                                            if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
-                                                | руб./сутки
-                                            else
-                                                | руб./час
-                                        else
-                                            | звоните
-                                .col-xs-7.text-right
-                                    a.btn.btn-success.btn-lg.btn-order(href='/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
-                                        i.fa.fa-print.pull-left
-                                        | Оставить заявку
-                                        if machinery.region[0] && machinery.region[0].smena
-                                            small Минимальный заказ — #{machinery.region[0].smena}
-                            p!= machinery.content
-                            if (machinery.params && machinery.params.length > 0 && machinery.params[0].name !== '')
-                                .panel.panel-default
-                                    .panel-heading Характеристики
-                                    table.table
-                                        each param in machinery.params
-                                            tr
-                                                td= param.name
-                                                td= param.value
-            .col-lg-3
-                include ../partials/sidebar
+  .container
+    .row
+      .col-lg-9
+        .myBoard
+          .clearfix.mrg2
+            .col-md-5
+              if (user && user.role == 'admin')
+                a.btn.btn-default.btn-xs(href='machinery/edit/#{machinery._id}') редактировать
+              if (machinery.img && machinery.img.length > 0)
+                if (machinery.img[0] && machinery.img[0].url !== '')
+                  .thumb: img(src='#{machinery.img[0].url}', alt='#{machinery.img[0].alt}')
+                if (machinery.img[1] && machinery.img[1].url && machinery.img[1].url !== '')
+                  .thumb: a(href='#{machinery.img[1].url}', data-lightbox='lightbox'): img(src='#{machinery.img[1].url}', alt='#{machinery.img[1].alt}')
+            .col-md-7
+              small.category: a(href='category/#{machinery.category.url}')= machinery.category.title
+              .h1= machinery.title
+              .row.order
+                .col-xs-5
+                  h3.price
+                    small Стоимость аренды:
+                    if machinery.price && machinery.price !== '0'
+                      | #{machinery.price}&nbsp;
+                      if machinery.category.title === 'Подъемники коленчатые' || machinery.category.title === 'Подъемники ножничные'
+                        | руб./сутки
+                      else
+                        | руб./час
+                    else
+                      | звоните
+                .col-xs-7.text-right
+                  a.btn.btn-success.btn-lg.btn-order(href='/order/#{machinery.category.url}/#{machinery.url}', data-toggle='modal', data-target='#modalOrder')
+                    i.fa.fa-print.pull-left
+                    | Оставить заявку
+                    if machinery.region[0] && machinery.region[0].smena
+                      small Минимальный заказ — #{machinery.region[0].smena}
+              p!= machinery.content
+              if (machinery.params && machinery.params.length > 0 && machinery.params[0].name !== '')
+                .panel.panel-default
+                  .panel-heading Характеристики
+                  table.table
+                    each param in machinery.params
+                      tr
+                        td= param.name
+                        td= param.value
+      .col-lg-3
+        include ../partials/sidebar
 
-    if (machinery.seo && machinery.seo.content)
-        .allotted-2: .container
-            article.seo(role='article')
-                != machinery.seo.content
+  if (machinery.seo && machinery.seo.content)
+    .allotted-2: .container
+      article.seo(role='article')
+        != machinery.seo.content
 
 block body_child
-    #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
-        .modal-dialog
-            .modal-content
+  #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content

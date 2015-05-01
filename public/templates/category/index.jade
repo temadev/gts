@@ -1,72 +1,73 @@
 extends ../layouts/main
 block active-item
-    - nav.menu[category.category.title].active = 1
-    - nav.menu[category.category.title].S[category.title].active = 1
+  - nav.menu[category.category.title].active = 1
+  - nav.menu[category.category.title].S[category.title].active = 1
 block seo
-    meta(name='description', content='#{category.seo.description}')
-    meta(name='keywords', content='#{category.seo.keywords}')
-    title #{category.seo.title?category.seo.title:category.title} | ГлобалТехноСтрой
+  meta(name='description', content='#{category.seo.description}')
+  meta(name='keywords', content='#{category.seo.keywords}')
+  title #{category.seo.title ? category.seo.title : category.title} | ГлобалТехноСтрой
 block content
-    .container
-        .row
-            .col-lg-9
-                .myBoard
-                    if (category.category)
-                        .clearfix.mrg2
-                            .col-md-2
-                                if (user && user.role == 'admin')
-                                    a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') редактировать
-                                .thumb: img(src='img/icons/#{category.image}')
-                            .col-md-10
-                                small.category: a(href='/')= category.category.title
-                                .h1.subTitle= category.title
-                                .hidden-xs
-                                    p!= category.content
-                        if (machinery[0])
-                            .row
-                                .table-responsive
-                                    table.myTable
-                                        thead
-                                            tr
-                                                td Модель
-                                                td #{machinery[0].params[0].name}
-                                                if (machinery[0].params[1])
-                                                    td #{machinery[0].params[1].name}
-                                                td Стоимость аренды
-                                        tbody
-                                            each machine in machinery
-                                                tr
-                                                    td: a(href='machinery/#{machine.url}', data-toggle='modal', data-target='#modalMachinery')= machine.title
-                                                    td #{machine.params[0].value}
-                                                    if (machine.params[1])
-                                                        td #{machine.params[1].value}
-                                                    td
-                                                        if machine.price && machine.price !== '0'
-                                                            | #{machine.price}&nbsp;
-                                                            if machine.category == '544677d1f23fda0000151807' || machine.category == '5446779ef23fda0000151806'
-                                                                | руб./сут
-                                                            else
-                                                                | руб./час
-                                                        else
-                                                            | звоните
-                    else
-                        .clearfix.mrg2
-                            .col-md-12
-                                h1.subTitle= category.title
-                                p= category.content
-            .col-lg-3
-                include ../partials/sidebar
+  .container
+    .row
+      .col-lg-9
+        .alert.alert-success Наш выбор спецтехники гораздо больше! Мы можем доставить спецтехнику из ближайших регионов.<br><a href='/order/#{category.url}/any' class="alert-link" data-toggle="modal" data-target="#modalOrder">Оставляйте вашу заявку или звоните по телефону</a>
+        .myBoard
+          if (category.category)
+            .clearfix.mrg2
+              .col-md-2
+                if (user && user.role == 'admin')
+                  a.btn.btn-default.btn-xs(href='category/edit/#{category._id}') редактировать
+                .thumb: img(src='img/icons/#{category.image}')
+              .col-md-10
+                small.category: a(href='/')= category.category.title
+                .h1.subTitle= category.title
+                .hidden-xs
+                  p!= category.content
+            if (machinery[0])
+              .row
+                .table-responsive
+                  table.myTable
+                    thead
+                      tr
+                        td Модель
+                        td #{machinery[0].params[0].name}
+                        if (machinery[0].params[1])
+                          td #{machinery[0].params[1].name}
+                        td Стоимость аренды
+                    tbody
+                      each machine in machinery
+                        tr
+                          td: a(href='machinery/#{machine.url}', data-toggle='modal', data-target='#modalMachinery')= machine.title
+                          td #{machine.params[0].value}
+                          if (machine.params[1])
+                            td #{machine.params[1].value}
+                          td
+                            if machine.price && machine.price !== '0'
+                              | #{machine.price}&nbsp;
+                              if machine.category == '544677d1f23fda0000151807' || machine.category == '5446779ef23fda0000151806'
+                                | руб./сут
+                              else
+                                | руб./час
+                            else
+                              | звоните
+          else
+            .clearfix.mrg2
+              .col-md-12
+                h1.subTitle= category.title
+                p= category.content
+      .col-lg-3
+        include ../partials/sidebar
 
-    if (category.seo && category.seo.content)
-        .allotted-2.hidden-xs: .container
-            article.seo(role='article')
-                != category.seo.content
+  if (category.seo && category.seo.content)
+    .allotted-2.hidden-xs: .container
+      article.seo(role='article')
+        != category.seo.content
 
 block body_child
-    #modalMachinery.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
-        .modal-dialog.modal-lg
-            .modal-content
+  #modalMachinery.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+    .modal-dialog.modal-lg
+      .modal-content
 
-    #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
-        .modal-dialog
-            .modal-content
+  #modalOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content

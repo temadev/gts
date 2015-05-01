@@ -70,12 +70,20 @@ module.exports = function (router) {
     async.parallel({
       machinery: function (cb) {
         Machinery.findOne({url: req.params.machinery}, {title: 1}).exec(function (err, machinery) {
-          cb(null, machinery.title);
+          if (machinery) {
+            cb(null, machinery.title);
+          } else {
+            cb(null, 'any');
+          }
         });
       },
       category: function (cb) {
         Category.findOne({url: req.params.category}, {title: 1}).exec(function (err, category) {
-          cb(null, category.title);
+          if (category) {
+            cb(null, category.title);
+          } else {
+            cb(null, 'any');
+          }
         });
       }
     }, function (err, title) {
