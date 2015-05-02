@@ -704,6 +704,21 @@ h6 {
   padding: 4px 16px;
   font-size: 18px;
 }
+#headPromo .meadiHolder .carousel-caption .badge {
+  right: 0;
+  top: -5px;
+  font-size: 24px;
+  line-height: 108px;
+  text-transform: uppercase;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  background: #E2265F;
+  cursor: default;
+  border-radius: 50%;
+  border: 6px dotted #FFF;
+}
 @media (min-width: 768px) and (max-width: 991px) {
   #headPromo .meadiHolder .carousel-caption h3 {
     font-size: 28px;
@@ -729,6 +744,13 @@ h6 {
   #headPromo .meadiHolder .carousel-caption .price {
     font-size: 12px;
   }
+  #headPromo .meadiHolder .carousel-caption .badge {
+    top: -10px;
+    font-size: 28px;
+    line-height: 128px;
+    width: 140px;
+    height: 140px;
+  }
 }
 @media (min-width: 1200px) {
   #headPromo .meadiHolder .carousel-caption {
@@ -741,6 +763,12 @@ h6 {
   #headPromo .meadiHolder .carousel-caption .order,
   #headPromo .meadiHolder .carousel-caption .price {
     font-size: 14px;
+  }
+  #headPromo .meadiHolder .carousel-caption .badge {
+    font-size: 36px;
+    line-height: 168px;
+    width: 180px;
+    height: 180px;
   }
 }
 @media (min-width: 1400px) {
@@ -756,6 +784,14 @@ h6 {
 @media (min-width: 1600px) {
   #headPromo .meadiHolder .carousel-caption {
     margin-bottom: 75px;
+  }
+  #headPromo .meadiHolder .carousel-caption .badge {
+    top: -20px;
+    font-size: 42px;
+    line-height: 184px;
+    width: 200px;
+    height: 200px;
+    border-width: 8px;
   }
 }
 #headPromo .myForm {

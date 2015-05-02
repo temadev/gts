@@ -4,6 +4,19 @@
       if (nav.menu['Главная']['active'])
         .active.item
           picture
+            source(src='img/slide7_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide7.jpg')
+            img(src='img/slide7.jpg', alt='Автокран Клинцы 25 тонн')
+          .carousel-caption.hidden-xs
+            .badge.hidden-xs Акция
+            a(href='machinery/ks-55713-1k-4-klinci', data-toggle='modal', data-target='#modalMachinery')
+              .description.hidden-sm: span Специальная цена
+              h3 Автокран "Клинцы" 25 тонн
+              div
+                .price <strike>1500</strike> 1300 <span>руб/час</span>
+                .order Оставить заявку
+        .item
+          picture
             source(src='img/slide6_small.jpg', media='(max-width: 768px)')
             source(src='img/slide6.jpg')
             img(src='img/slide6.jpg', alt='Погрузчик JCB 3CX')
@@ -13,18 +26,6 @@
               h3 Погрузчик JCB 3CX
               div
                 .price 1250 <span>руб/час</span>
-                .order Оставить заявку
-        .item
-          picture
-            source(src='img/slide7_small.jpg', media='(max-width: 768px)')
-            source(src='img/slide7.jpg')
-            img(src='img/slide7.jpg', alt='Автокран Клинцы 25 тонн')
-          .carousel-caption.hidden-xs
-            a(href='machinery/ks-55713-1k-4-klinci', data-toggle='modal', data-target='#modalMachinery')
-              .description.hidden-sm: span Специальная цена
-              h3 Автокран "Клинцы" 25 тонн
-              div
-                .price 1500 <span>руб/час</span>
                 .order Оставить заявку
         .item
           picture
