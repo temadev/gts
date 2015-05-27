@@ -183,6 +183,7 @@ module.exports = function (router) {
 
     var body = req.body;
 
+    body.url = body.url.trim();
     body.hide = body.hide?true:false;
 
     Machinery.findByIdAndUpdate(body.id, {$set: body}, function (err, machinery) {
@@ -206,10 +207,13 @@ module.exports = function (router) {
 
     var body = req.body;
 
+    body.url = body.url.trim();
+
     var newMachinery = new Machinery(body);
 
     newMachinery.save(function (err, machinery) {
-      res.redirect('/machinery/' + machinery.url);
+      if (machinery)
+        res.redirect('/machinery/' + machinery.url);
     });
 
   });

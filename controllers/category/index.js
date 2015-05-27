@@ -59,6 +59,7 @@ module.exports = function (router) {
 
     var body = req.body;
 
+    body.url = body.url.trim();
     body.hide = body.hide?true:false;
 
     Category.findByIdAndUpdate(body.id, { $set: body }, function (err, category) {
@@ -81,6 +82,8 @@ module.exports = function (router) {
   router.post('/create', auth.isAuthenticated(), function (req, res) {
 
     var body = req.body;
+
+    body.url = body.url.trim();
 
     var newCategory = new Category(body);
 
