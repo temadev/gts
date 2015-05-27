@@ -4,6 +4,19 @@
       if (nav.menu['Главная']['active'])
         .active.item
           picture
+            source(src='img/slide8_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide8.jpg')
+            img(src='img/slide8.jpg', alt='Подъемник ножничный Haulotte Compact 8')
+          .carousel-caption.hidden-xs
+            .badge.hidden-xs Акция
+            a(href='machinery/haulotte-compact-8', data-toggle='modal', data-target='#modalMachinery')
+              .description.hidden-sm: span Специальная цена
+              h3 Подъемник Haulotte Compact 8
+              div
+                .price <strike>2300</strike> 2000 <span>руб/час</span>
+                .order Оставить заявку
+        .item
+          picture
             source(src='img/slide7_small.jpg', media='(max-width: 768px)')
             source(src='img/slide7.jpg')
             img(src='img/slide7.jpg', alt='Автокран Клинцы 25 тонн')
