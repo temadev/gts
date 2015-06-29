@@ -12,6 +12,17 @@
 
   "middleware": {
 
+    "compress": {
+      "enabled": true,
+      "module": {
+        "arguments": [
+          {
+            "threshold": 512
+          }
+        ]
+      }
+    },
+
     "static": {
       "module": {
         "arguments": [ "path:./.build" ]
