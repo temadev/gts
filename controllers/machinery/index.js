@@ -212,8 +212,9 @@ module.exports = function (router) {
     var newMachinery = new Machinery(body);
 
     newMachinery.save(function (err, machinery) {
-      if (machinery)
+      if (machinery) {
         res.redirect('/machinery/' + machinery.url);
+      }
     });
 
   });

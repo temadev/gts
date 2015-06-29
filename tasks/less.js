@@ -9,7 +9,9 @@ module.exports = function less(grunt) {
   return {
     build: {
       options: {
-        cleancss: true
+        cleancss: true,
+        compress: true,
+        syncImport: true
       },
       files: {
         '.build/css/app.css': 'public/css/app.less',
