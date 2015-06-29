@@ -19,6 +19,10 @@
 
   "middleware": {
 
+    "compress": {
+      "enabled": true
+    },
+
     "devtools": {
       "enabled": true,
       "priority": 35,
