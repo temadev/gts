@@ -15,5 +15,10 @@ nav#headMenu.navbar.navbar-default(role='navigation')
           | &nbsp;Бланк договора
     ul.nav.navbar-nav
       +build-menu-items(nav.menu)
-      li: a(href='/page/pesok-shheben-beton') Песок, щебень, бетон
+      li(class="dropdown")
+        a(href='/page/pesok-shheben-beton', data-toggle="dropdown", class="dropdown-toggle") Песок, щебень, бетон
+        ul(class="dropdown-menu")
+          li: a(href='/page/pesok') Песок
+          li: a(href='/page/sheben') Щебень
+          li: a(href='/page/beton') Бетон
 // END Top Navbar

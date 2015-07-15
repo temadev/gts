@@ -27,7 +27,20 @@ module.exports = function (router) {
           next();
         }
         if (page) {
-          res.render('page/index', { page: page, url: '/page/' + url });
+          var menu
+            , menuItems = ['pesok', 'sheben', 'beton'];
+          async.each(menuItems, function (item, cb) {
+            if (item === page.url) {
+              menu = true;
+            }
+            cb();
+          }, function () {
+            var content = { page: page, url: '/page/' + url };
+            if (menu) {
+              content.menu = menuItems;
+            }
+            res.render('page/index', content);
+          });
         }
       });
 

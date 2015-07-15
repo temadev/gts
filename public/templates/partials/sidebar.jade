@@ -1,6 +1,11 @@
 .panel-group#sidebar
-    +build-sidebar-items(nav.menu)
-    .panel.panel-default
-        .panel-heading
-            h4.panel-title
-                a(href="/page/pesok-shheben-beton") Сыпучие материалы
+  +build-sidebar-items(nav.menu)
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a(data-toggle="collapse", data-parent="#sidebar", href="#pesok-sheben-beton") Песок, щебень, бетон
+    .panel-collapse.collapse(id="pesok-sheben-beton")
+      .list-group
+        a.list-group-item(href="/page/pesok") Песок
+        a.list-group-item(href="/page/sheben") Щебень
+        a.list-group-item(href="/page/beton") Бетон

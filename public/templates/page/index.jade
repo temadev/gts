@@ -1,18 +1,32 @@
 extends ../layouts/main
 block seo
-    meta(name='description', content='#{page.seo.description}')
-    meta(name='keywords', content='#{page.seo.keywords}')
-    title #{page.seo.title?page.seo.title:page.title}
+  meta(name='description', content='#{page.seo.description}')
+  meta(name='keywords', content='#{page.seo.keywords}')
+  title #{page.seo.title ? page.seo.title : page.title}
 block content
-    // START #content
-    .container
+  // START #content
+  .container
+    .row
+      div(class=menu?'col-lg-9':'col-lg-12')
         .myBoard
-            .clearfix.mrg2
-                .col-md-12
-                    h1.subTitle= page.title
-                    if (user && user.role == 'admin')
-                        a.btn.btn-default.btn-xs(href='page/edit/#{page._id}') редактировать
-                    != page.content
-    // END #content
-    if (page.seo && page.seo.content)
-        != page.seo.content
+          .clearfix.mrg2
+            .col-md-12
+              h1.subTitle= page.title
+              if (user && user.role == 'admin')
+                a.btn.btn-default.btn-xs(href='page/edit/#{page._id}') редактировать
+              != page.content
+      if (menu)
+        .col-lg-3
+          #sidebar.panel-group
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#sidebar", href="#pesok-sheben-beton") Песок, щебень, бетон
+              .panel-collapse.collapse(id="pesok-sheben-beton", class="in")
+                .list-group
+                  a.list-group-item(href="/page/pesok", class="#{(page.url === menu[0])?'active':''}") Песок
+                  a.list-group-item(href="/page/sheben", class="#{(page.url === menu[1])?'active':''}") Щебень
+                  a.list-group-item(href="/page/beton", class="#{(page.url === menu[2])?'active':''}") Бетон
+  // END #content
+  if (page.seo && page.seo.content)
+    != page.seo.content
