@@ -4,17 +4,16 @@
       if (nav.menu['Главная']['active'])
         .active.item
           picture
-            source(src='img/slide8_small.jpg', media='(max-width: 768px)')
-            source(src='img/slide8.jpg')
-            img(src='img/slide8.jpg', alt='Подъемник ножничный Haulotte Compact 8')
+            source(src='img/slide9_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide9.jpg')
+            img(src='img/slide9.jpg', alt='Экскаватор JCB 220')
           .carousel-caption.hidden-xs
-            .badge.hidden-xs Акция
-            a(href='machinery/haulotte-compact-8', data-toggle='modal', data-target='#modalMachinery')
-              .description.hidden-sm: span Специальная цена
-              h3 Haulotte Compact 8
+            a(href='#')
+              .description.hidden-sm: span Продажа экскаватора
+              h3 Экскаватор JCB 220
               div
-                .price <strike>2300</strike> 2000 <span>руб/сутки</span>
-                .order Оставить заявку
+                .price 2 800 000 <span>руб</span>
+                //.order Оставить заявку
         .item
           picture
             source(src='img/slide7_small.jpg', media='(max-width: 768px)')
@@ -26,7 +25,20 @@
               .description.hidden-sm: span Специальная цена
               h3 Автокран "Клинцы" 25 тонн
               div
-                .price <strike>1500</strike> 1300 <span>руб/час</span>
+                .price <strike>1500</strike> 1400 <span>руб/час</span>
+                .order Оставить заявку
+        .item
+          picture
+            source(src='img/slide8_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide8.jpg')
+            img(src='img/slide8.jpg', alt='Подъемник ножничный Haulotte Compact 10N')
+          .carousel-caption.hidden-xs
+            .badge.hidden-xs Акция
+            a(href='machinery/haulotte-compact-10-n', data-toggle='modal', data-target='#modalMachinery')
+              .description.hidden-sm: span Специальная цена
+              h3 Haulotte Compact 10N
+              div
+                .price <strike>2300</strike> 2000 <span>руб/сутки</span>
                 .order Оставить заявку
         .item
           picture
@@ -39,18 +51,6 @@
               h3 Погрузчик JCB 3CX
               div
                 .price 1250 <span>руб/час</span>
-                .order Оставить заявку
-        .item
-          picture
-            source(src='img/slide3_small.jpg', media='(max-width: 768px)')
-            source(src='img/slide3.jpg')
-            img(src='img/slide3.jpg', alt='Volvo BL 71B')
-          .carousel-caption.hidden-xs
-            a(href='machinery/volvo-bl-71b', data-toggle='modal', data-target='#modalMachinery')
-              .description.hidden-sm: span Специальная цена
-              h3 Погрузчик Volvo BL 71B
-              div
-                .price 1300 <span>руб/час</span>
                 .order Оставить заявку
         .item
           picture
@@ -76,7 +76,7 @@
     button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown'): span.caret
     ul.dropdown-menu(role='menu')
       each link in links
-        li: a(href='#{link.href}#{url?url:"/"}') #{link.title}
+        li: a(href='#{link.href}#{url ? url : "/"}') #{link.title}
 if (nav.menu['Главная']['active'])
   .slideHolder
     a.scrollTo(href='#content'): i.fa.fa-angle-down
