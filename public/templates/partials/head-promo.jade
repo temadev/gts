@@ -8,12 +8,13 @@
             source(src='img/slide9.jpg')
             img(src='img/slide9.jpg', alt='Экскаватор JCB 220')
           .carousel-caption.hidden-xs
-            a(href='#')
-              .description.hidden-sm: span Продажа экскаватора
+            .badge.hidden-xs Акция
+            a(href='machinery/jcb-js220lc', data-toggle='modal', data-target='#modalMachinery')
+              .description.hidden-sm: span Специальная цена
               h3 Экскаватор JCB 220
               div
-                .price 2 550 000 <span>руб</span>
-                //.order Оставить заявку
+                .price <strike>1500</strike> 1400 <span>руб/час</span>
+                .order Оставить заявку
         .item
           picture
             source(src='img/slide7_small.jpg', media='(max-width: 768px)')
@@ -60,6 +61,18 @@
           .carousel-caption.hidden-xs
             .description.hidden-sm: span Аренда строительной техники
             h3 ГТС ГлобалТехноСтрой
+        .item
+          picture
+            source(src='img/slide9_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide9.jpg')
+            img(src='img/slide9.jpg', alt='Экскаватор JCB 220')
+          .carousel-caption.hidden-xs
+            a(href='#')
+              .description.hidden-sm: span Продажа экскаватора
+              h3 Экскаватор JCB 220
+              div
+                .price 2 550 000 <span>руб</span>
+                //.order Оставить заявку
       else
         .active.item
           picture
