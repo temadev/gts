@@ -84,3 +84,5 @@ Temporary Items
 
 # Bower
 public/components
+
+.env

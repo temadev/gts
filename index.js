@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 
 var kraken = require('kraken-js'),
   app = require('express')(),
