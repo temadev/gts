@@ -186,6 +186,10 @@ module.exports = function (router) {
     body.url = body.url.trim();
     body.hide = body.hide?true:false;
 
+    body.img = body.img.filter(function (img) {
+      return (img.url !== '')
+    });
+
     Machinery.findByIdAndUpdate(body.id, {$set: body}, function (err, machinery) {
       res.redirect('/machinery/' + machinery.url);
     });

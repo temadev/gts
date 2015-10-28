@@ -63,12 +63,13 @@ block content
                                         input.form-control(type='text', name='img[#{index}][url]', value='#{image.url}', placeholder='url')
                                     .col-sm-4
                                         input.form-control(type='text', name='img[#{index}][alt]', value='#{image.alt}', placeholder='alt')
-                            .form-group
-                                label.col-sm-2.control-label Картинки
-                                .col-sm-4
-                                    input.form-control(type='text', name='img[][url]', placeholder='url')
-                                .col-sm-4
-                                    input.form-control(type='text', name='img[][alt]', placeholder='alt')
+                                if machinery.img.length == index+1
+                                    .form-group
+                                        label.col-sm-2.control-label Картинки
+                                        .col-sm-4
+                                            input.form-control(type='text', name='img[#{index+1}][url]', placeholder='url')
+                                        .col-sm-4
+                                            input.form-control(type='text', name='img[#{index+1}][alt]', placeholder='alt')
                         else
                             .form-group
                                 label.col-sm-2.control-label Картинки
