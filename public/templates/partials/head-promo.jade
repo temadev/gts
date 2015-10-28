@@ -4,17 +4,15 @@
       if (nav.menu['Главная']['active'])
         .active.item
           picture
-            source(src='img/slide9_small.jpg', media='(max-width: 768px)')
-            source(src='img/slide9.jpg')
-            img(src='img/slide9.jpg', alt='Экскаватор JCB 220')
+            source(src='img/slide10_small.jpg', media='(max-width: 768px)')
+            source(src='img/slide10.jpg')
+            img(src='img/slide10.jpg', alt='Тралы')
           .carousel-caption.hidden-xs
-            .badge.hidden-xs Акция
-            a(href='machinery/jcb-js220lc', data-toggle='modal', data-target='#modalMachinery')
-              .description.hidden-sm: span Специальная цена
-              h3 Экскаватор JCB 220
+            a(href='/category/traly')
+              .description.hidden-sm: span Перевозка габаритного груза — 7000
+              h3 Перевозка негабаритного груза — 13 000
               div
-                .price <strike>1600</strike> 1500 <span>руб/час</span>
-                .order Оставить заявку
+                .price длина груза не более 4 метров
         .item
           picture
             source(src='img/slide7_small.jpg', media='(max-width: 768px)')
